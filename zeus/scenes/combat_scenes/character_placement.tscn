@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://b56cq2nhrp0jk"]
+
+[ext_resource type="Script" path="res://scripts/combat/character_placement.gd" id="1_5ga6c"]
+[ext_resource type="PackedScene" uid="uid://e4mf1o0bfbce" path="res://scenes/combat_scenes/combat_menu.tscn" id="2_upwkx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i38kb"]
+bg_color = Color(0.746705, 0, 0.00312301, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr6il"]
+bg_color = Color(4.71681e-06, 0.686481, 0.020193, 1)
+
+[node name="CharacterPlacement" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-0.2, 30.875)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_5ga6c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_bottom = 40.0
+
+[node name="Healthbar" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_i38kb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gr6il")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+expand_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
+
+[node name="TargetIndicator" type="ColorRect" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+color = Color(0.709964, 0.677731, 1.92523e-06, 1)
+
+[node name="CombatMenu" parent="." instance=ExtResource("2_upwkx")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+
+[editable path="CombatMenu"]

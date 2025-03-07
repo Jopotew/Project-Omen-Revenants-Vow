@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://dquv18hb3ujgo"]
+
+[ext_resource type="Script" path="res://scripts/models/effect_model.gd" id="1_nxlpf"]
+
+[resource]
+script = ExtResource("1_nxlpf")
+name = "Burn"
+description = "Burns the target, dealing damage per turn"
+effect_type = "Debuff"
+damage_per_turn = 10
+healing_per_turn = 0
+max_health_mod = 1.0
+mana_mod = 1.0
+mana_regen_per_turn = 0
+mana_reave = 0
+physical_attack_mod = 1.0
+magic_attack_mod = 1.0
+physical_defense_mod = 1.0
+magic_defense_mod = 1.0
+speed_mod = 1.0
+action_turn_mod = false
+corruption_mod = 1.0
+corruption_resistance_mod = 1.0
+is_corrupted = false
+duration = 5
+stacks = true
+max_stacks = 1
+removable = true
+removal_conditions = []

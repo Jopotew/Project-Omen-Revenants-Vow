@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://djnef0yqgf1f6"]
+
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="1_sc3lm"]
+[ext_resource type="Resource" uid="uid://rqcvaf74ivg2" path="res://resources/characters/jopote.tres" id="2_icht3"]
+[ext_resource type="Texture2D" uid="uid://dvfdu3b62x2qr" path="res://assets/player.png" id="3_1nrgh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttfsv"]
+size = Vector2(219.595, 446.008)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(-4.76837e-07, -3.8147e-06)
+scale = Vector2(0.00753764, 0.00753764)
+script = ExtResource("1_sc3lm")
+stats = ExtResource("2_icht3")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -43.139)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_ttfsv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(26.6757, 234.556)
+offset = Vector2(-26.6757, -234.556)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, 3.05176e-05)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_1nrgh")
+offset = Vector2(-22.8649, -230.745)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -43.794)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_ttfsv")

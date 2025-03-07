@@ -1,0 +1,154 @@
+[gd_scene load_steps=2 format=3 uid="uid://e4mf1o0bfbce"]
+
+[ext_resource type="Script" path="res://scripts/combat/combat_menu.gd" id="1_l2iq1"]
+
+[node name="CombatMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.401748, 0.401748)
+script = ExtResource("1_l2iq1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 296.206
+offset_right = 354.206
+offset_bottom = 101.0
+scale = Vector2(2.62621, 2.76832)
+
+[node name="OptionsMenu" type="VBoxContainer" parent="MarginContainer"]
+modulate = Color(0.505882, 0.690196, 1, 1)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Attack" type="Button" parent="MarginContainer/OptionsMenu"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Skills" type="Button" parent="MarginContainer/OptionsMenu"]
+layout_mode = 2
+text = "Skills"
+
+[node name="Items" type="Button" parent="MarginContainer/OptionsMenu"]
+layout_mode = 2
+text = "Items
+"
+
+[node name="Flee" type="Button" parent="MarginContainer/OptionsMenu"]
+layout_mode = 2
+text = "Flee
+"
+
+[node name="AttacksMenu" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Ascended" type="CheckButton" parent="MarginContainer/AttacksMenu"]
+layout_mode = 2
+text = "Ascend"
+
+[node name="NormalAttack" type="Button" parent="MarginContainer/AttacksMenu"]
+layout_mode = 2
+text = "Normal Attack"
+
+[node name="HeavyAttack" type="Button" parent="MarginContainer/AttacksMenu"]
+layout_mode = 2
+text = "Heavy Attack"
+
+[node name="PhysicalAttackSkill" type="Button" parent="MarginContainer/AttacksMenu"]
+layout_mode = 2
+text = "Skill"
+
+[node name="Back" type="Button" parent="MarginContainer/AttacksMenu"]
+layout_mode = 2
+text = "back
+"
+
+[node name="SkillsMenu" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Ascended" type="CheckButton" parent="MarginContainer/SkillsMenu"]
+layout_mode = 2
+text = "Ascend"
+
+[node name="Skill1" type="Button" parent="MarginContainer/SkillsMenu"]
+layout_mode = 2
+text = "Skill1"
+
+[node name="Skill2" type="Button" parent="MarginContainer/SkillsMenu"]
+layout_mode = 2
+text = "Skill2"
+
+[node name="Skill3" type="Button" parent="MarginContainer/SkillsMenu"]
+layout_mode = 2
+text = "Skill3"
+
+[node name="Skill4" type="Button" parent="MarginContainer/SkillsMenu"]
+layout_mode = 2
+text = "Skill4"
+
+[node name="Skill5" type="Button" parent="MarginContainer/SkillsMenu"]
+layout_mode = 2
+text = "Skill5
+"
+
+[node name="Back" type="Button" parent="MarginContainer/SkillsMenu"]
+layout_mode = 2
+text = "back
+"
+
+[node name="ItemsMenu" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Item1" type="Button" parent="MarginContainer/ItemsMenu"]
+layout_mode = 2
+text = "Item1"
+
+[node name="Item2" type="Button" parent="MarginContainer/ItemsMenu"]
+layout_mode = 2
+text = "Item2"
+
+[node name="Item3" type="Button" parent="MarginContainer/ItemsMenu"]
+layout_mode = 2
+text = "Item3"
+
+[node name="Item4" type="Button" parent="MarginContainer/ItemsMenu"]
+layout_mode = 2
+text = "Item4"
+
+[node name="Item5" type="Button" parent="MarginContainer/ItemsMenu"]
+layout_mode = 2
+text = "Item5"
+
+[node name="Back" type="Button" parent="MarginContainer/ItemsMenu"]
+layout_mode = 2
+text = "back
+"
+
+[connection signal="pressed" from="MarginContainer/OptionsMenu/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="MarginContainer/OptionsMenu/Skills" to="." method="_on_skills_pressed"]
+[connection signal="pressed" from="MarginContainer/OptionsMenu/Items" to="." method="_on_items_pressed"]
+[connection signal="pressed" from="MarginContainer/OptionsMenu/Flee" to="." method="_on_flee_pressed"]
+[connection signal="toggled" from="MarginContainer/AttacksMenu/Ascended" to="." method="_on_ascended_toggled"]
+[connection signal="pressed" from="MarginContainer/AttacksMenu/NormalAttack" to="." method="_on_normal_attack_pressed"]
+[connection signal="pressed" from="MarginContainer/AttacksMenu/HeavyAttack" to="." method="_on_heavy_attack_pressed"]
+[connection signal="pressed" from="MarginContainer/AttacksMenu/PhysicalAttackSkill" to="." method="_on_physical_attack_skill_pressed"]
+[connection signal="pressed" from="MarginContainer/AttacksMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="MarginContainer/SkillsMenu/Ascended" to="." method="_on_ascended_toggled"]
+[connection signal="pressed" from="MarginContainer/SkillsMenu/Skill1" to="." method="_on_skill_1_pressed"]
+[connection signal="pressed" from="MarginContainer/SkillsMenu/Skill2" to="." method="_on_skill_2_pressed"]
+[connection signal="pressed" from="MarginContainer/SkillsMenu/Skill3" to="." method="_on_skill_3_pressed"]
+[connection signal="pressed" from="MarginContainer/SkillsMenu/Skill4" to="." method="_on_skill_4_pressed"]
+[connection signal="pressed" from="MarginContainer/SkillsMenu/Skill5" to="." method="_on_skill_5_pressed"]
+[connection signal="pressed" from="MarginContainer/SkillsMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/ItemsMenu/Item1" to="." method="_on_item_1_pressed"]
+[connection signal="pressed" from="MarginContainer/ItemsMenu/Item2" to="." method="_on_item_2_pressed"]
+[connection signal="pressed" from="MarginContainer/ItemsMenu/Item3" to="." method="_on_item_3_pressed"]
+[connection signal="pressed" from="MarginContainer/ItemsMenu/Item4" to="." method="_on_item_4_pressed"]
+[connection signal="pressed" from="MarginContainer/ItemsMenu/Item5" to="." method="_on_item_5_pressed"]
+[connection signal="pressed" from="MarginContainer/ItemsMenu/Back" to="." method="_on_back_pressed"]
