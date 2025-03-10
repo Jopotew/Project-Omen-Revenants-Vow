@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Zeus"
+config/name="Project Omen: Revenant’s Vow"
+config/version="0.0"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -18,6 +19,7 @@ config/icon="res://icon.svg"
 
 CombatData="*res://scripts/combat/combat_data.gd"
 CombatSignals="*res://scripts/combat/combat_signals.gd"
+CombatTrancitioner="*res://scripts/combat/combat_trancitioner.gd"
 
 [input]
 

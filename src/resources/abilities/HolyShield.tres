@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=6 format=3 uid="uid://bupwloen4br2d"]
+
+[ext_resource type="Script" path="res://scripts/models/effects/effect_model.gd" id="1_ebxyd"]
+[ext_resource type="Script" path="res://scripts/models/effects/ability_model.gd" id="2_qvrcg"]
+[ext_resource type="Script" path="res://scripts/models/effects/health/decrease_health.gd" id="2_r4145"]
+[ext_resource type="Resource" path="res://resources/effects/defense_effects/MagicShield.tres" id="3_u87yj"]
+
+[sub_resource type="Resource" id="Resource_5b6xi"]
+script = ExtResource("2_r4145")
+health = 15
+effect_type = 1
+elemental_type = 0
+animation = ""
+sound_effect = ""
+
+[resource]
+script = ExtResource("2_qvrcg")
+name = "HolyShield"
+description = "Casts a magic shield on the target."
+cost = Array[ExtResource("1_ebxyd")]([SubResource("Resource_5b6xi")])
+cooldown = 0
+corruption_increase = 0
+effects = Array[ExtResource("1_ebxyd")]([ExtResource("3_u87yj")])
+target_type = "Single"
+animation = "None"
+sound_effect = "None"

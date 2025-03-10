@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=4 format=3 uid="uid://c638kka322k8t"]
+
+[ext_resource type="Script" path="res://scripts/models/effects/effect_model.gd" id="1_ytq0p"]
+[ext_resource type="Resource" uid="uid://pfd5pi7enqsu" path="res://resources/effects/defense_effects/PhysicalShield.tres" id="2_20lkx"]
+[ext_resource type="Script" path="res://scripts/models/effects/ability_model.gd" id="3_7qhkb"]
+
+[resource]
+script = ExtResource("3_7qhkb")
+name = "Protectors Vow"
+elemental_type = 2
+description = "Chants a spell to increase the targets defense."
+cooldown = 0
+effects = Array[ExtResource("1_ytq0p")]([ExtResource("2_20lkx")])
+target_type = "Single"
+animation = "None"
+sound_effect = "None"
