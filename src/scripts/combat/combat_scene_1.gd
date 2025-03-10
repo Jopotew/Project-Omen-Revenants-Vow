@@ -96,7 +96,7 @@ func display_combatant(group_child: Control, combatant):
     else:  #player
         group_child.set_player(combatant)
         group_child.set_combatant(combatant)
-        print(combatant.stats.name," ", combatant.stats.health)
+        
         group_child.set_up()
         get_combatant_hpbar(combatant, group_child)
         get_combatant_texture(combatant, group_child)

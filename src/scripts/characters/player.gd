@@ -184,7 +184,6 @@ func set_skills(value: Ability) -> void:
 
 ## Habilidades de combate
 func get_combat_skills() -> Array:
-    print(stats.combat_skills)
     return stats.combat_skills
 
 func set_combat_skills(value: Array) -> void:
@@ -210,7 +209,7 @@ func remove_combat_item(item_rem):
 func clear_items():
     stats.items.clear()
     
-func clear_combvat_items():
+func clear_combat_items():
     stats.combat_items.clear()   
 
 ## Objetos de combate
