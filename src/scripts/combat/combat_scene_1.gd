@@ -14,23 +14,78 @@ extends Control
 
 var enemies: Array = []
 var allies: Array = []
+var player: Node2D
 
 var enemy_group: Node2D
 var ally_group: Node2D
 
-func _ready() -> void:
-    for i in range(CombatData.allies.size()):
-        allies.append(CombatData.allies[i].instantiate())
-        combat_queue.add_to_queue(CombatData.allies[i].instantiate()) 
 
-    for i in range(CombatData.enemies.size()):
-        enemies.append(CombatData.enemies[i].instantiate())
-        combat_queue.add_to_queue(CombatData.enemies[i].instantiate())  
+
+
+
+
+
+
+
+
+
+func _ready() -> void:
+     
+    var combatant_data: Dictionary = CombatTransitioner.get_combat_data()
+    select_combatants(combatant_data)
     
     
-    check_combatants(allies, enemies)
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    #
+    #for i in range(CombatData.allies.size()):
+        #allies.append(CombatData.allies[i].instantiate())
+        #combat_queue.add_to_queue(CombatData.allies[i].instantiate()) 
+#
+    #for i in range(CombatData.enemies.size()):
+        #enemies.append(CombatData.enemies[i].instantiate())
+        #combat_queue.add_to_queue(CombatData.enemies[i].instantiate())  
+    #
+    #
+    #check_combatants(allies, enemies)
+    
+    
+    
+    
+    
+    
+    
+    
+func select_combatants(combat_data: Dictionary):
+    player = combat_data.get("player", null)
+    allies = combat_data.get("allies", [])
+    enemies = combat_data.get("enemies", [])
+    print(combat_data)
+    print(player)
+    print(allies)
+    print(enemies)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
     
 
 func check_combatants(allies: Array, enemies: Array):
