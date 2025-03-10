@@ -39,7 +39,7 @@ offset_bottom = 372.0
 visible = false
 position = Vector2(0, -1)
 
-[node name="Enemy1" parent="EnemyMarkers/EnemGroup1" instance=ExtResource("3_6gf60")]
+[node name="Enemy1 Placeholder" parent="EnemyMarkers/EnemGroup1" instance=ExtResource("3_6gf60")]
 offset_left = 782.0
 offset_top = 444.0
 offset_right = 782.0
@@ -49,13 +49,13 @@ offset_bottom = 444.0
 visible = false
 position = Vector2(0, -1)
 
-[node name="Enemy1" parent="EnemyMarkers/EnemGroup2" instance=ExtResource("3_6gf60")]
+[node name="Enemy1 Placeholder" parent="EnemyMarkers/EnemGroup2" instance=ExtResource("3_6gf60")]
 offset_left = 640.0
 offset_top = 337.0
 offset_right = 640.0
 offset_bottom = 337.0
 
-[node name="Enemy2" parent="EnemyMarkers/EnemGroup2" instance=ExtResource("3_6gf60")]
+[node name="Enemy2 Placeholder" parent="EnemyMarkers/EnemGroup2" instance=ExtResource("3_6gf60")]
 offset_left = 861.0
 offset_top = 414.0
 offset_right = 861.0
@@ -65,23 +65,23 @@ offset_bottom = 414.0
 visible = false
 position = Vector2(0, -1)
 
-[node name="Enemy1" parent="EnemyMarkers/EnemGroup3" instance=ExtResource("3_6gf60")]
+[node name="Enemy1 Placeholder" parent="EnemyMarkers/EnemGroup3" instance=ExtResource("3_6gf60")]
 offset_left = 640.0
 offset_top = 337.0
 offset_right = 640.0
 offset_bottom = 337.0
 
-[node name="Enemy2" parent="EnemyMarkers/EnemGroup3" instance=ExtResource("3_6gf60")]
-offset_left = 862.0
-offset_top = 414.0
-offset_right = 862.0
-offset_bottom = 414.0
+[node name="Enemy2 Placeholder" parent="EnemyMarkers/EnemGroup3" instance=ExtResource("3_6gf60")]
+offset_left = 640.0
+offset_top = 337.0
+offset_right = 640.0
+offset_bottom = 337.0
 
-[node name="Enemy3" parent="EnemyMarkers/EnemGroup3" instance=ExtResource("3_6gf60")]
-offset_left = 623.0
-offset_top = 506.0
-offset_right = 623.0
-offset_bottom = 506.0
+[node name="Enemy3 Placeholder" parent="EnemyMarkers/EnemGroup3" instance=ExtResource("3_6gf60")]
+offset_left = 640.0
+offset_top = 337.0
+offset_right = 640.0
+offset_bottom = 337.0
 
 [node name="AllyMarkers" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -90,7 +90,7 @@ metadata/_edit_lock_ = true
 visible = false
 position = Vector2(130, 469)
 
-[node name="Player" parent="AllyMarkers/AllyGroup1" instance=ExtResource("3_6gf60")]
+[node name="Player Placeholder" parent="AllyMarkers/AllyGroup1" instance=ExtResource("3_6gf60")]
 offset_left = 78.0
 offset_top = -17.0
 offset_right = 78.0
@@ -100,13 +100,13 @@ offset_bottom = -17.0
 visible = false
 position = Vector2(0, -1)
 
-[node name="Player" parent="AllyMarkers/AllyGroup2" instance=ExtResource("3_6gf60")]
+[node name="Player Placeholder" parent="AllyMarkers/AllyGroup2" instance=ExtResource("3_6gf60")]
 offset_left = 285.0
 offset_top = 340.0
 offset_right = 285.0
 offset_bottom = 340.0
 
-[node name="Ally" parent="AllyMarkers/AllyGroup2" instance=ExtResource("3_6gf60")]
+[node name="Ally Placeholder" parent="AllyMarkers/AllyGroup2" instance=ExtResource("3_6gf60")]
 offset_left = 101.0
 offset_top = 424.0
 offset_right = 101.0

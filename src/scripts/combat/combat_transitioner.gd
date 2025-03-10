@@ -1,7 +1,5 @@
 extends Node
 
-
-
 var combat_data: Dictionary = {}
 
 const COMBAT_SCENE_PATH = "res://scenes/combat_scenes/combat_scene1.tscn"

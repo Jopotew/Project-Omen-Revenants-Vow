@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 CombatData="*res://scripts/combat/combat_data.gd"
 CombatSignals="*res://scripts/combat/combat_signals.gd"
-CombatTrancitioner="*res://scripts/combat/combat_trancitioner.gd"
+CombatTransitioner="*res://scripts/combat/combat_transitioner.gd"
 
 [input]
 

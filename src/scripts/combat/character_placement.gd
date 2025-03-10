@@ -19,8 +19,6 @@ var items_name: Array
 var attacks_name: Array
 
 
-func _ready() -> void:
-    player = CombatData.get_player_data()
 
 func set_up() -> void: 
     get_menus()
@@ -36,9 +34,10 @@ func get_player():
     return player 
 
 func set_player(pj):
-    player = pj  
+    print("pj  ", pj)
+    player = pj
+    print(player)  
 
-    
 func get_menus():
     for container in combat_menu.get_children():
         for menu in container.get_children():
@@ -63,7 +62,6 @@ func set_menus():
     
     
     for skill in skill_list:
-        print(skill)
         skills_name.append(skill["Name"])
     for attack in attack_list:
         attacks_name.append(attack["Name"])
@@ -91,7 +89,6 @@ func set_button_texts(menu: Control, names: Array):
     var index = 0
 
     for button in menu.get_children():
-        print(button)  # Depuración: Ver qué botones encuentra
         if button is Button and button.name != "Back" and button.name != "Ascended":  
             if index < names.size():  
                 button.text = names[index]  
@@ -108,7 +105,6 @@ func get_menus_name(type):
     var list : Array
     if type == "skills":
         list = player.get_combat_skills()
-        print(list)
         return list
     elif type == "items":
         list = player.get_combat_attacks()

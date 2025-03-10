@@ -22,126 +22,108 @@ var ally_group: Node2D
 
 
 
-
-
-
-
-
-
-
 func _ready() -> void:
      
     var combatant_data: Dictionary = CombatTransitioner.get_combat_data()
     select_combatants(combatant_data)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    #
-    #for i in range(CombatData.allies.size()):
-        #allies.append(CombatData.allies[i].instantiate())
-        #combat_queue.add_to_queue(CombatData.allies[i].instantiate()) 
-#
-    #for i in range(CombatData.enemies.size()):
-        #enemies.append(CombatData.enemies[i].instantiate())
-        #combat_queue.add_to_queue(CombatData.enemies[i].instantiate())  
-    #
-    #
+    placement_handler()
     #check_combatants(allies, enemies)
-    
-    
-    
-    
-    
-    
     
     
 func select_combatants(combat_data: Dictionary):
     player = combat_data.get("player", null)
     allies = combat_data.get("allies", [])
     enemies = combat_data.get("enemies", [])
-    print(combat_data)
-    print(player)
-    print(allies)
-    print(enemies)
+        
     
     
-    
-    
-    
-    
-    
-    
-    
+func placement_handler():
+    var a_count: int = count_combatants("allies")
+    var e_count: int = count_combatants("enemies")
+    set_group_visible(true, a_count, e_count)
+    set_combatants_in_place()
     
     
 
     
 
-func check_combatants(allies: Array, enemies: Array):
-    var ally_count := allies.size()
-    var enemy_count := enemies.size()
-    set_combatants_in_place(ally_count, enemy_count, allies, enemies)
+func count_combatants(group:String):
+    if group == "allies":
+        var ally_count := allies.size()
+        return ally_count + 1 #el jugador es el +1
+    elif group == "enemies":
+        var enemy_count := enemies.size()
+        return enemy_count
+        
+        
+func set_group_visible(value: bool, a_count: int, e_count: int):
+    
+    ally_group = ally_group_1 if a_count == 1 else ally_group_2
+    enemy_group = enem_group_1 if e_count == 1 else (enem_group_2 if e_count == 2 else enem_group_3)
+    
+    ally_group.set_visible(value)
+    enemy_group.set_visible(value)
 
 ## Posiciona a los aliados y enemigos en sus posiciones adecuados. Solo su sprite. Luego deberan ser sus animaciones. 
-func set_combatants_in_place(ally_count: int, enemy_count: int, allies: Array, enemies: Array):
+func set_combatants_in_place():    
+    var player_position
+    var ally_position
     
-    ally_group = ally_group_1 if ally_count == 1 else ally_group_2
-    enemy_group = enem_group_1 if enemy_count == 1 else (enem_group_2 if enemy_count == 2 else enem_group_3)
-    
-    ally_group.set_visible(true)
-    enemy_group.set_visible(true)
-    
-    get_character_placement(ally_group, allies)
-    get_character_placement(enemy_group, enemies)
-    
-    combat_manager.get_combatants_list(ally_group, enemy_group)
-    combat_manager.create_queue()
-    combat_manager.next_turn()
-
-##Searchs the hpbar and texture position 
-func get_character_placement(group: Node2D, ally_or_enemies: Array):
-    
-    var character_placements = group.get_children()
-    
-    for i in range(min(character_placements.size(), ally_or_enemies.size())):
-        var character_pos = character_placements[i]
-        var combatant = ally_or_enemies[i]
-        
-        character_pos.set_combatant(combatant)
-        character_pos.set_up()
-
-        
-        for vbox in character_pos.get_children():
-            # Configurar la barra de vida
-            var hpbar: ProgressBar = vbox.get_node_or_null("Healthbar")
-            if hpbar:
-                set_initial_character_hpbar(hpbar, combatant)
-
-            # Configurar la textura con dimensiones ajustadas
-            var txt_rect: TextureRect = vbox.get_node_or_null("TextureRect")
+    for children in ally_group.get_children():
+        if children.name == "Player Placeholder":
+            display_combatant(children, player)
+        elif children.name == "Ally Placeholder":
+            display_combatant(children, allies)  
             
-            if txt_rect:
-                var char_sprite: Sprite2D = combatant.get_node_or_null("Sprite2D")
-                if char_sprite and char_sprite.texture:
-                   
-                    txt_rect.texture = char_sprite.texture
-                    var dimensions = combatant.get_dimensions()
-                  
-                    txt_rect.custom_minimum_size = dimensions
-                    txt_rect.size = dimensions
-                    txt_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    for children in enemy_group.get_children():
+        display_combatant(children, enemies)
+   
+    #combat_manager.get_combatants_list(ally_group, enemy_group)
+    #combat_manager.create_queue()
+    #combat_manager.next_turn()
 
+
+
+
+func display_combatant(group_child: Control, combatant):
+    if combatant is Array:
+        for c in combatant:
+            group_child.set_combatant(c)
+            group_child.set_up()
+            get_combatant_hpbar(c, group_child)
+            get_combatant_texture(c, group_child)
+        
+    else:  #player
+        group_child.set_player(combatant)
+        group_child.set_combatant(combatant)
+        print(combatant.stats.name," ", combatant.stats.health)
+        group_child.set_up()
+        get_combatant_hpbar(combatant, group_child)
+        get_combatant_texture(combatant, group_child)
+        
+
+
+func get_combatant_hpbar(combatant, group_child):
+    for vbox in group_child.get_children():
+        var hpbar: ProgressBar = vbox.get_node_or_null("Healthbar")
+        if hpbar:
+            set_initial_character_hpbar(hpbar, combatant)
+        
+    
+func get_combatant_texture(combatant, group_child):
+    for vbox in group_child.get_children():
+        var txt_rect: TextureRect = vbox.get_node_or_null("TextureRect")
+        
+        if txt_rect:
+            var char_sprite: Sprite2D = combatant.get_node_or_null("Sprite2D")
+            if char_sprite and char_sprite.texture:
+                
+                txt_rect.texture = char_sprite.texture
+                var dimensions = combatant.get_dimensions()
+                
+                txt_rect.custom_minimum_size = dimensions
+                txt_rect.size = dimensions
+                txt_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
 
 func set_initial_character_hpbar(hpbar : ProgressBar, combatant: Node2D):
