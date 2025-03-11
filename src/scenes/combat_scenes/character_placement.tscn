@@ -37,13 +37,13 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_gr6il")
 layout_mode = 2
 expand_mode = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
-
 [node name="TargetHighlight" type="TextureRect" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
 texture = ExtResource("2_8gjtq")
 expand_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
 
 [node name="CombatMenu" parent="." instance=ExtResource("2_upwkx")]
 visible = false

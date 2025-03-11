@@ -122,10 +122,11 @@ func on_target_selected():
 func set_target_visible(control_node: Control, value: bool):
     for vbox in control_node.get_children():
         var target: TextureRect = vbox.get_node_or_null("TargetHighlight")
-        if target:
+        if target and combatant_targeted!= null :
             target.set_visible(value)
-        
+            
             var dimensions = combatant_targeted.get_dimensions()
+            print(dimensions)
             target.custom_minimum_size = dimensions
             target.size = dimensions
             target.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
