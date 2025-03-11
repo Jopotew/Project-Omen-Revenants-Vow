@@ -89,14 +89,15 @@ func display_combatant(group_child: Control, combatant):
     if combatant is Array:
         for c in combatant:
             group_child.set_combatant(c)
+            group_child.set_up(player)
             get_combatant_hpbar(c, group_child)
             get_combatant_texture(c, group_child)
         
     else:  #player
-        group_child.set_player(combatant)
+        group_child.set_player(player)
         group_child.set_combatant(combatant)
         
-        group_child.set_up()
+        group_child.set_up(player)
         get_combatant_hpbar(combatant, group_child)
         get_combatant_texture(combatant, group_child)
         

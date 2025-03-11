@@ -188,6 +188,8 @@ func get_combat_skills() -> Array:
 
 func set_combat_skills(value: Array) -> void:
     stats.combat_skills = value
+    
+
 
 ## Objetos
 func get_items() -> Array:
@@ -225,6 +227,20 @@ func get_combat_attacks() -> Array:
 
 func set_combat_attacks(value: Array) -> void:
     stats.combat_attacks = value
+    
+    
+func get_actions() -> Dictionary:
+    var skills = get_combat_skills()
+    var attacks = get_combat_attacks()
+    var items = get_combat_items()
+    
+    var actions: Dictionary = {
+        "skills": [skills],
+        "items": [items],
+        "attacks": [attacks]
+    }
+    
+    return actions
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~📏 Tamaño en Escena de Combate~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 

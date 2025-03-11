@@ -2,6 +2,8 @@ class_name CombatManager
 extends Node
 
 @onready var combat_queue: CombatQueue = $"../CombatQueue"
+@onready var action_manager: CombatActionManager = $"../CombatActions"
+
 
 #~~~~~~~~~~~~~~~~~~
 # VARIABLES PRINCIPALES
@@ -9,6 +11,9 @@ extends Node
 var turn_queue: Array  # Lista de turnos
 var combat_list: Array  # Lista de todos los combatientes
 var placeholder_list: Array
+
+var player
+var action_selected
 
 var target_index: int = 0  # Índice del objetivo actual
 var selecting_target: bool = false  # Indica si se está eligiendo un objetivo
@@ -23,12 +28,14 @@ func _ready() -> void:
 
 
 func _on_action_selected(action_name):
-    print("Acción recibida:", action_name)
+    action_selected = action_name
+    action_manager.get_actions_available(player)
 
 
-func combatant_set_up(player, allies, enemies, ally_group, enemy_group):
+func combatant_set_up(p, allies, enemies, ally_group, enemy_group):
     combat_list.clear()
-    combat_list.append(player)
+    combat_list.append(p)
+    player = p
     combat_list.append_array(allies)
     combat_list.append_array(enemies)
     
@@ -126,7 +133,6 @@ func set_target_visible(control_node: Control, value: bool):
             target.set_visible(value)
             
             var dimensions = combatant_targeted.get_dimensions()
-            print(dimensions)
             target.custom_minimum_size = dimensions
             target.size = dimensions
             target.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -137,6 +143,8 @@ func set_target_visible(control_node: Control, value: bool):
 
 #~~~~~~~~~~~~~~~~~~
 # APLICACIÓN DE ACCIONES
+
+
 
 ## Aplica una acción al objetivo seleccionado (por ahora solo imprime)
 func apply_action(target: Node2D):

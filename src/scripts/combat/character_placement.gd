@@ -20,9 +20,9 @@ var attacks_name: Array
 
 
 
-func set_up() -> void: 
+func set_up(player) -> void: 
     get_menus()
-    set_menus()
+    set_menus(player)
 
 func get_combatant() -> Node2D:
     return assigned_combatant
@@ -51,10 +51,10 @@ func get_menus():
         
         
         
-func set_menus():
-    var skill_list : Array = get_menus_name("skills")
-    var attack_list: Array = get_menus_name("attacks")  
-    var item_list: Array = get_menus_name("items")  
+func set_menus(player):
+    var skill_list : Array = get_menus_name("skills", player)
+    var attack_list: Array = get_menus_name("attacks", player)  
+    var item_list: Array = get_menus_name("items", player)  
 
     
     skills_name.clear()
@@ -103,10 +103,9 @@ func set_button_texts(menu: Control, names: Array):
     
     
     
-func get_menus_name(type):
+func get_menus_name(type, player):
     var list : Array
     if type == "skills":
-
         list = player.get_combat_skills()
         return list
     elif type == "items":
