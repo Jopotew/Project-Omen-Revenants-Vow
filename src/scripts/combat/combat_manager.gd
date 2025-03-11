@@ -13,7 +13,7 @@ var placeholder_list: Array
 var target_index: int = 0  # Índice del objetivo actual
 var selecting_target: bool = false  # Indica si se está eligiendo un objetivo
 var selected_control_node_target: Control = null  # Nodo de control del objetivo seleccionado
-var selected_node2d_target: Node2D = null  # Nodo 2D del objetivo seleccionado
+var combatant_targeted: Node2D = null  # Nodo 2D del objetivo seleccionado
 
 #~~~~~~~~~~~~~~~~~~
 # FUNCIONES PARA INICIALIZAR COMBATE Y LISTAS
@@ -97,9 +97,16 @@ func _unhandled_input(event: InputEvent):
 func update_target():
     if combat_list.is_empty():
         return
-    selected_control_node_target = placeholder_list[target_index]
-    selected_node2d_target = selected_control_node_target.assigned_combatant
-
+    if selected_control_node_target == null:
+        selected_control_node_target = placeholder_list[target_index]
+        set_target_visible(selected_control_node_target, true)
+        combatant_targeted = selected_control_node_target.assigned_combatant
+    else:   
+        set_target_visible(selected_control_node_target, false)
+        selected_control_node_target = placeholder_list[target_index]
+        set_target_visible(selected_control_node_target, true)
+        combatant_targeted = selected_control_node_target.assigned_combatant
+    
 ## Confirma el objetivo seleccionado y finaliza la selección
 func confirm_target():
     selecting_target = false  # Salir del modo de selección
@@ -108,7 +115,24 @@ func confirm_target():
 
 ## Se ejecuta cuando un objetivo ha sido seleccionado
 func on_target_selected():
-    apply_action(selected_node2d_target)
+    apply_action(combatant_targeted)
+
+
+
+func set_target_visible(control_node: Control, value: bool):
+    for vbox in control_node.get_children():
+        var target: TextureRect = vbox.get_node_or_null("TargetHighlight")
+        if target:
+            target.set_visible(value)
+        
+            var dimensions = combatant_targeted.get_dimensions()
+            target.custom_minimum_size = dimensions
+            target.size = dimensions
+            target.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+        
+
+
+
 
 #~~~~~~~~~~~~~~~~~~
 # APLICACIÓN DE ACCIONES

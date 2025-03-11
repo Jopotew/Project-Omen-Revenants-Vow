@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b56cq2nhrp0jk"]
+[gd_scene load_steps=6 format=3 uid="uid://b56cq2nhrp0jk"]
 
 [ext_resource type="Script" path="res://scripts/combat/character_placement.gd" id="1_5ga6c"]
+[ext_resource type="Texture2D" uid="uid://7ca7y2x6t630" path="res://assets/target.png" id="2_8gjtq"]
 [ext_resource type="PackedScene" uid="uid://e4mf1o0bfbce" path="res://scenes/combat_scenes/combat_menu.tscn" id="2_upwkx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i38kb"]
@@ -39,7 +40,9 @@ expand_mode = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
 
 [node name="TargetHighlight" type="TextureRect" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
+texture = ExtResource("2_8gjtq")
 expand_mode = 1
 
 [node name="CombatMenu" parent="." instance=ExtResource("2_upwkx")]
