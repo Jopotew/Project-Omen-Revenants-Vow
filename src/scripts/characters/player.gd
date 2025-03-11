@@ -229,7 +229,7 @@ func set_combat_attacks(value: Array) -> void:
     stats.combat_attacks = value
     
     
-func get_actions() -> Dictionary:
+func get_action(action) -> Dictionary:
     var skills = get_combat_skills()
     var attacks = get_combat_attacks()
     var items = get_combat_items()
