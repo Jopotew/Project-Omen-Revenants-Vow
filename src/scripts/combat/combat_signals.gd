@@ -1,4 +1,4 @@
 extends Node
 
 
-signal action_selected(action_name)
+signal action_selected(action_name, type)

@@ -14,6 +14,7 @@ var placeholder_list: Array
 
 var player
 var action_selected
+var action_type
 
 var target_index: int = 0  # Índice del objetivo actual
 var selecting_target: bool = false  # Indica si se está eligiendo un objetivo
@@ -27,10 +28,11 @@ func _ready() -> void:
     CombatSignals.action_selected.connect(_on_action_selected)
 
 
-func _on_action_selected(action_name):
+func _on_action_selected(action_name, type):
     action_selected = action_name
-    action_manager.get_actions_available(player)
-
+    action_type = type
+    action_manager.command_action(player, combatant_targeted, action_selected, action_type)
+    
 
 func combatant_set_up(p, allies, enemies, ally_group, enemy_group):
     combat_list.clear()
@@ -38,12 +40,15 @@ func combatant_set_up(p, allies, enemies, ally_group, enemy_group):
     player = p
     combat_list.append_array(allies)
     combat_list.append_array(enemies)
-    
+    combat_preparation()
     
     placeholder_list.append_array(ally_group.get_children())
     placeholder_list.append_array(enemy_group.get_children())
     
     
+func combat_preparation():
+    for combatant in combat_list:
+        combatant.in_combat(true)
 ## Crea la cola de combate
 func create_queue():
     for combatant in combat_list:
@@ -118,13 +123,7 @@ func update_target():
 func confirm_target():
     selecting_target = false  # Salir del modo de selección
     set_menu_up()
-    on_target_selected()
-
-## Se ejecuta cuando un objetivo ha sido seleccionado
-func on_target_selected():
-    apply_action(combatant_targeted)
-
-
+    
 
 func set_target_visible(control_node: Control, value: bool):
     for vbox in control_node.get_children():
@@ -142,14 +141,6 @@ func set_target_visible(control_node: Control, value: bool):
 
 
 #~~~~~~~~~~~~~~~~~~
-# APLICACIÓN DE ACCIONES
-
-
-
-## Aplica una acción al objetivo seleccionado (por ahora solo imprime)
-func apply_action(target: Node2D):
-    pass
-
 
 
 #~~~~~~~~~~~~~~~~~~

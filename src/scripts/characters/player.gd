@@ -229,18 +229,18 @@ func set_combat_attacks(value: Array) -> void:
     stats.combat_attacks = value
     
     
-func get_action(action) -> Dictionary:
-    var skills = get_combat_skills()
-    var attacks = get_combat_attacks()
-    var items = get_combat_items()
-    
-    var actions: Dictionary = {
-        "skills": [skills],
-        "items": [items],
-        "attacks": [attacks]
-    }
-    
-    return actions
+## Obtiene las acciones del tipo especificado
+func get_actions(action_type: String) -> Array:
+    match action_type:
+        "skills":
+            return get_combat_skills()
+        "items":
+            return get_combat_items()
+        "attacks":
+            return get_combat_attacks()
+        _:
+            return []
+
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~📏 Tamaño en Escena de Combate~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
@@ -293,10 +293,14 @@ FIN.
 ## fuera del mismo
 func in_combat(value: bool):
     if value: 
+        stats.in_combat = true
         combat_stats = stats
+        
     else: 
         stats.health = combat_stats.health 
+        stats.in_combat = false
         combat_stats = stats
+        
 
     
 func recieve_damage(damage: int, type: Enums.DamageType, elemental_type : Enums.ElementalType):
@@ -351,6 +355,7 @@ func increase_health(value):
     combat_stats.health += value
     
 func decrease_health(value):
+    print("Combat_stats: ", combat_stats.health)
     combat_stats.health -= value
     
 func increase_defense(value, type):

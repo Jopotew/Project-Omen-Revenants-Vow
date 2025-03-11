@@ -31,6 +31,7 @@ extends Resource
 @export var is_controllable: bool = false
 @export var action_turn: bool = false
 @export var turns_inactive: int 
+@export var in_combat: bool = false
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~👁️‍🗨️ Corrupción y Resistencias~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 @export var corruption: int = 0
