@@ -77,10 +77,10 @@ func set_combatants_in_place():
             
     for children in enemy_group.get_children():
         display_combatant(children, enemies)
-   
-    #combat_manager.get_combatants_list(ally_group, enemy_group)
-    #combat_manager.create_queue()
-    #combat_manager.next_turn()
+    
+    combat_manager.combatant_set_up(player, allies, enemies, ally_group, enemy_group)
+    combat_manager.create_queue()
+    combat_manager.next_turn()
 
 
 
@@ -89,7 +89,6 @@ func display_combatant(group_child: Control, combatant):
     if combatant is Array:
         for c in combatant:
             group_child.set_combatant(c)
-            group_child.set_up()
             get_combatant_hpbar(c, group_child)
             get_combatant_texture(c, group_child)
         

@@ -34,9 +34,9 @@ func get_player():
     return player 
 
 func set_player(pj):
-    print("pj  ", pj)
+    
     player = pj
-    print("player ", player )
+    
      
 
 func get_menus():
@@ -63,12 +63,13 @@ func set_menus():
     
     
     for skill in skill_list:
-        skills_name.append(skill["Name"])
+        skills_name.append(skill.name)
     for attack in attack_list:
-        attacks_name.append(attack["Name"])
+        attacks_name.append(attack.name)
     for item in item_list:
-         items_name.append(item["Name"])
+         items_name.append(item.name)
         
+    print(skills_name)
     
     set_button_texts(skills_menu, skills_name)
 
@@ -105,7 +106,7 @@ func set_button_texts(menu: Control, names: Array):
 func get_menus_name(type):
     var list : Array
     if type == "skills":
-        print(type)
+
         list = player.get_combat_skills()
         return list
     elif type == "items":

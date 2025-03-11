@@ -38,11 +38,9 @@ expand_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
 
-[node name="TargetIndicator" type="ColorRect" parent="VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(5, 5)
+[node name="TargetHighlight" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
-color = Color(0.709964, 0.677731, 1.92523e-06, 1)
+expand_mode = 1
 
 [node name="CombatMenu" parent="." instance=ExtResource("2_upwkx")]
 visible = false

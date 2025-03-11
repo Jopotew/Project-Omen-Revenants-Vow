@@ -7,7 +7,8 @@ extends Node
 # VARIABLES PRINCIPALES
 
 var turn_queue: Array  # Lista de turnos
-var combatant_list: Array  # Lista de todos los combatientes
+var combat_list: Array  # Lista de todos los combatientes
+var placeholder_list: Array
 
 var target_index: int = 0  # Índice del objetivo actual
 var selecting_target: bool = false  # Indica si se está eligiendo un objetivo
@@ -24,14 +25,22 @@ func _ready() -> void:
 func _on_action_selected(action_name):
     print("Acción recibida:", action_name)
 
-## Obtiene la lista de combatientes (aliados y enemigos)
-func get_combatants_list(ally_group: Node2D, enemy_group: Node2D): 
-    combatant_list.clear()  # Asegurar que la lista está vacía antes de agregar combatientes
-    combatant_list.append_array(ally_group.get_children())
-    combatant_list.append_array(enemy_group.get_children())
 
+func combatant_set_up(player, allies, enemies, ally_group, enemy_group):
+    combat_list.clear()
+    combat_list.append(player)
+    combat_list.append_array(allies)
+    combat_list.append_array(enemies)
+    
+    
+    placeholder_list.append_array(ally_group.get_children())
+    placeholder_list.append_array(enemy_group.get_children())
+    
+    
 ## Crea la cola de combate
 func create_queue():
+    for combatant in combat_list:
+        combat_queue.add_to_queue(combatant)
     combat_queue.create_queue()
 
 #~~~~~~~~~~~~~~~~~~
@@ -40,7 +49,6 @@ func create_queue():
 ## Cambia al siguiente turno
 func next_turn():
     var turn = combat_queue.get_turn()
-    print("Turno de:", turn.name)
     set_action_turn(turn)
 
 ## Marca el turno del personaje actual
@@ -62,10 +70,8 @@ func combat_turn(char_turn: Node2D):
 
 ## Inicia la selección de objetivo
 func start_target_selection():
-    if combatant_list.is_empty():
-        print("No hay combatientes disponibles.")
+    if combat_list.is_empty():
         return
-
     selecting_target = true
     target_index = 0  # Reiniciar el índice al inicio
     update_target()
@@ -77,11 +83,11 @@ func _unhandled_input(event: InputEvent):
 
     if event is InputEventKey and event.pressed:  # Solo detectar la pulsación inicial
         if event.is_action_pressed("ui_right"):
-            target_index = (target_index + 1) % combatant_list.size()  # Avanzar en la lista
+            target_index = (target_index + 1) % combat_list.size()  # Avanzar en la lista
             update_target()
 
         elif event.is_action_pressed("ui_left"):
-            target_index = (target_index - 1 + combatant_list.size()) % combatant_list.size()  # Retroceder
+            target_index = (target_index - 1 + combat_list.size()) % combat_list.size()  # Retroceder
             update_target()
 
         elif event.is_action_pressed("ui_accept"):
@@ -89,17 +95,14 @@ func _unhandled_input(event: InputEvent):
 
 ## Actualiza la selección en la consola (luego se puede agregar un indicador visual)
 func update_target():
-    if combatant_list.is_empty():
+    if combat_list.is_empty():
         return
-    selected_control_node_target = combatant_list[target_index]
+    selected_control_node_target = placeholder_list[target_index]
     selected_node2d_target = selected_control_node_target.assigned_combatant
-    
-    print("Seleccionado:", selected_node2d_target.get_name())  # Para depuración
 
 ## Confirma el objetivo seleccionado y finaliza la selección
 func confirm_target():
     selecting_target = false  # Salir del modo de selección
-    print("Objetivo confirmado:", selected_node2d_target.get_name())
     set_menu_up()
     on_target_selected()
 

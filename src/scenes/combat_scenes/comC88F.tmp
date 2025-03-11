@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=3 uid="uid://clusw26mrjsuv"]
+
+[ext_resource type="Script" path="res://scripts/combat/combat_scene_1.gd" id="1_sr4gc"]
+[ext_resource type="Texture2D" uid="uid://3rnum2eibhvt" path="res://assets/bg.png" id="1_wkyfr"]
+[ext_resource type="PackedScene" uid="uid://b56cq2nhrp0jk" path="res://scenes/combat_scenes/character_placement.tscn" id="3_6gf60"]
+[ext_resource type="PackedScene" uid="uid://e4mf1o0bfbce" path="res://scenes/combat_scenes/combat_menu.tscn" id="3_w44lj"]
+[ext_resource type="Script" path="res://scripts/models/Characters/character_actions.gd" id="5_3m0i2"]
+[ext_resource type="Script" path="res://scripts/combat_queue/combat_queue.gd" id="6_roth1"]
+[ext_resource type="Script" path="res://scripts/combat/combat_manager.gd" id="7_yfwgt"]
+
+[node name="CombatScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sr4gc")
+
+[node name="Background" type="TextureRect" parent="."]
+visibility_layer = 512
+z_index = -2
+layout_mode = 1
+anchors_preset = -1
+offset_right = 1157.0
+offset_bottom = 650.0
+texture = ExtResource("1_wkyfr")
+
+[node name="EnemyMarkers" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Boss" type="Node2D" parent="EnemyMarkers"]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Boss" parent="EnemyMarkers/Boss" instance=ExtResource("3_6gf60")]
+offset_left = 920.0
+offset_top = 372.0
+offset_right = 920.0
+offset_bottom = 372.0
+
+[node name="EnemGroup1" type="Node2D" parent="EnemyMarkers"]
+visible = false
+position = Vector2(0, -1)
+
+[node name="Enemy1 Placeholder" parent="EnemyMarkers/EnemGroup1" instance=ExtResource("3_6gf60")]
+offset_left = 782.0
+offset_top = 444.0
+offset_right = 782.0
+offset_bottom = 444.0
+
+[node name="EnemGroup2" type="Node2D" parent="EnemyMarkers"]
+visible = false
+position = Vector2(0, -1)
+
+[node name="Enemy1 Placeholder" parent="EnemyMarkers/EnemGroup2" instance=ExtResource("3_6gf60")]
+offset_left = 640.0
+offset_top = 337.0
+offset_right = 640.0
+offset_bottom = 337.0
+
+[node name="Enemy2 Placeholder" parent="EnemyMarkers/EnemGroup2" instance=ExtResource("3_6gf60")]
+offset_left = 861.0
+offset_top = 414.0
+offset_right = 861.0
+offset_bottom = 414.0
+
+[node name="EnemGroup3" type="Node2D" parent="EnemyMarkers"]
+visible = false
+position = Vector2(0, -1)
+
+[node name="Enemy1 Placeholder" parent="EnemyMarkers/EnemGroup3" instance=ExtResource("3_6gf60")]
+offset_left = 640.0
+offset_top = 337.0
+offset_right = 640.0
+offset_bottom = 337.0
+
+[node name="Enemy2 Placeholder" parent="EnemyMarkers/EnemGroup3" instance=ExtResource("3_6gf60")]
+offset_left = 640.0
+offset_top = 337.0
+offset_right = 640.0
+offset_bottom = 337.0
+
+[node name="Enemy3 Placeholder" parent="EnemyMarkers/EnemGroup3" instance=ExtResource("3_6gf60")]
+offset_left = 640.0
+offset_top = 337.0
+offset_right = 640.0
+offset_bottom = 337.0
+
+[node name="AllyMarkers" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="AllyGroup1" type="Node2D" parent="AllyMarkers"]
+visible = false
+position = Vector2(130, 469)
+
+[node name="Player Placeholder" parent="AllyMarkers/AllyGroup1" instance=ExtResource("3_6gf60")]
+offset_left = 78.0
+offset_top = -17.0
+offset_right = 78.0
+offset_bottom = -17.0
+
+[node name="AllyGroup2" type="Node2D" parent="AllyMarkers"]
+visible = false
+position = Vector2(0, -1)
+
+[node name="Player Placeholder" parent="AllyMarkers/AllyGroup2" instance=ExtResource("3_6gf60")]
+offset_left = 285.0
+offset_top = 340.0
+offset_right = 285.0
+offset_bottom = 340.0
+
+[node name="Ally Placeholder" parent="AllyMarkers/AllyGroup2" instance=ExtResource("3_6gf60")]
+offset_left = 101.0
+offset_top = 424.0
+offset_right = 101.0
+offset_bottom = 424.0
+
+[node name="CombatMenu" parent="." instance=ExtResource("3_w44lj")]
+visible = false
+layout_mode = 1
+offset_left = 178.0
+offset_top = 388.0
+offset_right = 178.0
+offset_bottom = 388.0
+scale = Vector2(0.359418, 0.359418)
+
+[node name="CombatActions" type="Node" parent="."]
+script = ExtResource("5_3m0i2")
+
+[node name="CombatQueue" type="Node" parent="."]
+script = ExtResource("6_roth1")
+
+[node name="CombatManager" type="Node" parent="."]
+script = ExtResource("7_yfwgt")
