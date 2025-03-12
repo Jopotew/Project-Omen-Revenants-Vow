@@ -372,23 +372,43 @@ func on_turn_start():
 
 
 func execute_action(target):
-    hp_treshhold()
+    self_hp_treshhold()
     
     
-func hp_treshhold():
+func self_hp_treshhold():
+    var actions = 1
     if combat_stats.health > (combat_stats.max_health * 0.75):
-        print("mayor a 75%")
+        high_health_actions()
         
     elif  combat_stats.health > (combat_stats.max_health * 0.5):
-        print("mayor a 50%")
+        medium_health_actions()
     
     elif combat_stats.health > (combat_stats.max_health * 0.25):
-        print("mayor a 25%")
+        low_health_actions()
         
     elif combat_stats.health < (combat_stats.max_health * 0.25):
-        print("Menor a 25%")
+        very_low_health_actions()
         
     else:
         print("raro que pase esto . no deberia pasar hpTreshhold")
         
     
+  
+func target_hp_treshold():
+    pass  
+    
+func low_health_actions():
+    var prob = random_number()
+
+func very_low_health_actions():
+    var prob = random_number()
+    
+func high_health_actions():
+    var prob = random_number()
+        
+func medium_health_actions():
+    var prob = random_number()
+
+
+func random_number():
+    return randi_range(1, 100)
