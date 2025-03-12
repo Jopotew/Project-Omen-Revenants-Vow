@@ -25,7 +25,7 @@ func set_level(value: int) -> void:
     stats.level = value
 
 ## Obtiene la experiencia del personaje.
-func get_experience() -> float:
+func get_experience() -> int:
     return stats.experience
 
 ## Establece la experiencia del personaje.
@@ -37,7 +37,7 @@ func get_exp_multiplier() -> float:
     return stats.exp_multiplier
 
 ## Establece el multiplicador de experiencia.
-func set_exp_multiplier(value: float) -> void:
+func set_exp_multiplier(value: int) -> void:
     stats.exp_multiplier = value
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~⚔️ Atributos de Combate~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -77,19 +77,19 @@ func set_max_mana(value: int) -> void:
     stats.mana = clamp(stats.mana, 0, stats.max_mana)
 
 ## Obtiene el ataque físico.
-func get_physical_attack() -> float:
+func get_physical_attack() -> int:
     return stats.physical_attack
 
 ## Establece el ataque físico.
-func set_physical_attack(value: float) -> void:
+func set_physical_attack(value: int) -> void:
     stats.physical_attack = value
 
 ## Obtiene el ataque mágico.
-func get_magic_attack() -> float:
+func get_magic_attack() -> int:
     return stats.magic_attack
 
 ## Establece el ataque mágico.
-func set_magic_attack(value: float) -> void:
+func set_magic_attack(value: int) -> void:
     stats.magic_attack = value
 
 ## Obtiene la precisión del ataque.
@@ -117,19 +117,19 @@ func set_effect(value: Effect) -> void:
     stats.effect = value
 
 ## Obtiene la defensa física.
-func get_physical_defense() -> float:
+func get_physical_defense() -> int:
     return stats.physical_defense
 
 ## Establece la defensa física.
-func set_physical_defense(value: float) -> void:
+func set_physical_defense(value: int) -> void:
     stats.physical_defense = value
 
 ## Obtiene la defensa mágica.
-func get_magic_defense() -> float:
+func get_magic_defense() -> int:
     return stats.magic_defense
 
 ## Establece la defensa mágica.
-func set_magic_defense(value: float) -> void:
+func set_magic_defense(value: int) -> void:
     stats.magic_defense = value
 
 ## Obtiene la velocidad del personaje.
@@ -169,7 +169,7 @@ func set_action_turn(value: bool) -> void:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~👁️‍🗨️ Corrupción y Resistencias~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 ## Obtiene el nivel de corrupción del personaje.
-func get_corruption() -> float:
+func get_corruption() -> int:
     return stats.corruption
 
 ## Establece el nivel de corrupción del personaje.
@@ -177,19 +177,19 @@ func set_corruption(value: int) -> void:
     stats.corruption = value
 
 ## Obtiene el multiplicador de corrupción.
-func get_corruption_multiplier() -> float:
+func get_corruption_multiplier() -> int:
     return stats.corruption_multiplier
 
 ## Establece el multiplicador de corrupción.
-func set_corruption_multiplier(value: float) -> void:
+func set_corruption_multiplier(value: int) -> void:
     stats.corruption_multiplier = value
 
 ## Obtiene la resistencia a la corrupción.
-func get_corruption_resistance() -> float:
+func get_corruption_resistance() -> int:
     return stats.resistance_to_corruption
 
 ## Establece la resistencia a la corrupción.
-func set_resistance(value: float) -> void:
+func set_resistance(value: int) -> void:
     stats.resistance_to_corruption = value
 
 ## Verifica si el personaje está corrompido.
@@ -308,9 +308,9 @@ func gain_experience(amount: float) -> void:
 func reset_stats() -> void:
     set_health(stats.max_health)
     set_mana(stats.max_mana)
-    set_corruption(0.0)
+    set_corruption(0)
     set_is_corrupted(false)
-    set_experience(0.0)
+    set_experience(0)
 
 ## Gestiona la entrada y salida del personaje en combate.
 func in_combat(value: bool):
