@@ -344,6 +344,10 @@ func check_element_affinity(elemental_type: Enums.ElementalType, damage: int) ->
     var element_affinity = ElementAffinity.new()
     var effectiveness = element_affinity.element_effectiveness(elemental_type, combat_stats.elemental_affinity)
     return int(damage * effectiveness)
+    
+## Reduce la salud del personaje.
+func decrease_health(value):
+    combat_stats.health -= value
 
 ## Aumenta la corrupción del personaje.
 func increase_corruption(value):

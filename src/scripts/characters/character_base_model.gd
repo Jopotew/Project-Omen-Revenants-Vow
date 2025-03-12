@@ -346,6 +346,10 @@ func check_element_affinity(elemental_type: Enums.ElementalType, damage: int) ->
     var effectiveness = element_affinity.element_effectiveness(elemental_type, combat_stats.elemental_affinity)
     return int(damage * effectiveness)
 
+## Reduce la salud del personaje.
+func decrease_health(value):
+    combat_stats.health -= value
+
 ## Aumenta la corrupción del personaje.
 func increase_corruption(value):
     combat_stats.corruption += value
@@ -367,7 +371,24 @@ func on_turn_start():
             combat_stats.action_turn = true
 
 
-func execute_action():
-    pass
+func execute_action(target):
+    hp_treshhold()
     
+    
+func hp_treshhold():
+    if combat_stats.health > (combat_stats.max_health * 0.75):
+        print("mayor a 75%")
+        
+    elif  combat_stats.health > (combat_stats.max_health * 0.5):
+        print("mayor a 50%")
+    
+    elif combat_stats.health > (combat_stats.max_health * 0.25):
+        print("mayor a 25%")
+        
+    elif combat_stats.health < (combat_stats.max_health * 0.25):
+        print("Menor a 25%")
+        
+    else:
+        print("raro que pase esto . no deberia pasar hpTreshhold")
+        
     

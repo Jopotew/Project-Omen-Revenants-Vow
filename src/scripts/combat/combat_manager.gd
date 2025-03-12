@@ -108,7 +108,7 @@ func handle_enemy_turn(npc: Node2D):
     # Esperar 1.5 segundos antes de que el enemigo realice su acción
     await get_tree().create_timer(5).timeout  
     print("JUJUJU PASO EL TURNO DEL ENEMIHGOOOOOOOOOO")
-    #npc.execute_ai_action()
+    npc.execute_action(player)
     end_turn()
 
 

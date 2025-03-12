@@ -56,6 +56,7 @@ is_alive = true
 is_controllable = true
 action_turn = false
 turns_inactive = 0
+in_combat = false
 corruption = 0
 corruption_multiplier = 0
 resistance_to_corruption = 0
