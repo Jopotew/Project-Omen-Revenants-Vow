@@ -18,8 +18,6 @@ func get_actions_available(player, type):
     return player_actions
     
 func use_action(resource, player, target):
-    print(target)
     resource.apply(player, target)
-    print(player.combat_stats.health)
-    print(target.combat_stats.health)
+    
     

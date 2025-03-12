@@ -106,9 +106,9 @@ func handle_enemy_turn(npc: Node2D):
     print("Turno del enemigo:", npc.name)
     
     # Esperar 1.5 segundos antes de que el enemigo realice su acción
-    await get_tree().create_timer(10).timeout  
+    await get_tree().create_timer(5).timeout  
     print("JUJUJU PASO EL TURNO DEL ENEMIHGOOOOOOOOOO")
-    #enemy.execute_ai_action()
+    #npc.execute_ai_action()
     end_turn()
 
 
@@ -205,11 +205,11 @@ func _on_action_selected(action_name: String, type: String):
     action_selected = action_name
     action_type = type
     action_manager.command_action(player, combatant_targeted, action_selected, action_type)
-
+    
     update_health_bar(combatant_targeted)
     end_turn()
 
-func update_health_bar(combatant: Node2D):
+func update_health_bar(combatant: Node2D): #no anda
     """
     Actualiza la barra de vida del combatiente tras recibir una acción.
 
@@ -218,7 +218,7 @@ func update_health_bar(combatant: Node2D):
     for vbox in selected_control_node_target.get_children():
         var hpbar: ProgressBar = vbox.get_node_or_null("Healthbar")
         if hpbar:
-            hpbar.value = combatant.stats.health
+            hpbar.value = combatant.combat_stats.health
 
 func end_turn():
     """
