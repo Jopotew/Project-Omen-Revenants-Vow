@@ -26,3 +26,21 @@ enum ElementalType {
     Neutral = 11,
     Corrupted = 12,
 }
+
+enum NPCStates {
+    IDLE,        
+    ARROGANCE,  
+    DECISION,   
+    BERSERK,    
+    ACTION,     
+    END_TURN,   
+    DEATH
+}
+
+
+enum HealthThreshold {
+    HIGH,
+    MEDIUM,
+    LOW,
+    VERY_LOW,
+}
