@@ -372,30 +372,73 @@ func on_turn_start():
 
 
 func execute_action(target):
-    self_hp_treshhold()
+    self_hp_threshold(target)
     
     
-func self_hp_treshhold():
-    var actions = 1
+func self_hp_threshold(target):
+    
     if combat_stats.health > (combat_stats.max_health * 0.75):
-        high_health_actions()
-        
+        target_hp_threshold(target, "high") 
     elif  combat_stats.health > (combat_stats.max_health * 0.5):
-        medium_health_actions()
-    
+        target_hp_threshold(target, "medium")
     elif combat_stats.health > (combat_stats.max_health * 0.25):
-        low_health_actions()
-        
+        target_hp_threshold(target, "low")  
     elif combat_stats.health < (combat_stats.max_health * 0.25):
-        very_low_health_actions()
+        target_hp_threshold(target, "very_low")
         
     else:
         print("raro que pase esto . no deberia pasar hpTreshhold")
         
     
   
-func target_hp_treshold():
-    pass  
+func target_hp_threshold(target, self_threshold):
+    if target.combat_stats.health > (target.combat_stats.max_health * 0.75):
+        check_thresholds(self_threshold, "high")
+    elif  target.combat_stats.health > (target.combat_stats.max_health * 0.5):
+        check_thresholds(self_threshold, "medium")
+    elif target.combat_stats.health > (target.combat_stats.max_health * 0.25):
+        check_thresholds(self_threshold, "low")
+    elif target.combat_stats.health < (target.combat_stats.max_health * 0.25):
+        check_thresholds(self_threshold, "very_low")
+    
+    
+    
+    
+func check_thresholds(self_threshold, target_threshold):
+    if self_threshold == "high" and target_threshold == "high":
+        pass
+    elif self_threshold == "high" and target_threshold == "medium":
+        pass
+    elif self_threshold == "high" and target_threshold == "low":
+        pass
+    elif self_threshold == "high" and target_threshold == "very_low":
+        pass
+    elif self_threshold == "medium" and target_threshold == "high":
+        pass
+    elif self_threshold == "medium" and target_threshold == "medium":
+        pass
+    elif self_threshold == "medium" and target_threshold == "low":
+        pass
+    elif self_threshold == "medium" and target_threshold == "very_low":
+        pass
+    elif self_threshold == "low" and target_threshold == "high":
+        pass
+    elif self_threshold == "low" and target_threshold == "medium":
+        pass
+    elif self_threshold == "low" and target_threshold == "low":
+        pass
+    elif self_threshold == "low" and target_threshold == "very_low":
+        pass
+    elif self_threshold == "very_low" and target_threshold == "high":
+        pass
+    elif self_threshold == "very_low" and target_threshold == "medium":
+        pass
+    elif self_threshold == "very_low" and target_threshold == "low":
+        pass
+    elif self_threshold == "very_low" and target_threshold == "very_low":
+        pass    
+    
+    
     
 func low_health_actions():
     var prob = random_number()
