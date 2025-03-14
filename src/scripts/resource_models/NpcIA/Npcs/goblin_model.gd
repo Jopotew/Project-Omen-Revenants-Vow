@@ -2,6 +2,8 @@ extends BaseNpcFSM
 class_name GoblinFSM
 
 
+
+## IDLE: verifica si es su turno y decide si pasa a ARROGANCE, BERSERK o DECISION.
 func state_idle(npc, target):
     if is_my_turn(npc):
         var npc_threshold = get_health_threshold(npc)
@@ -24,3 +26,46 @@ func state_idle(npc, target):
         # Caso contrario => DECISION
         else:
             current_state = Enums.NPCStates.DECISION
+            
+            
+            
+## ARROGANCE: cree que ganará fácilmente; toma una acción agresiva.
+func state_arrogance(npc, target):
+    var roll = get_prob()
+    var skills = npc.get_combat_skills()
+    # Ej: 70% big attack, 30% 'taunt'
+    if roll < 0.70:
+        npc.chosen_action = "big_attack"
+    else:
+        npc.chosen_action = "taunt"
+
+    current_state = Enums.NPCStates.ACTION          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            

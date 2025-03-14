@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=7 format=3 uid="uid://b7oitixdhnstu"]
+
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/effect_model.gd" id="1_1fp3t"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/mana/decrease_mana.gd" id="2_4s4mx"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/health/increase_health.gd" id="3_firex"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/ability_model.gd" id="4_pyenb"]
+
+[sub_resource type="Resource" id="Resource_8y1hv"]
+script = ExtResource("2_4s4mx")
+mana = 15
+effect_type = 6
+elemental_type = 0
+animation = ""
+sound_effect = ""
+
+[sub_resource type="Resource" id="Resource_v2o0m"]
+script = ExtResource("3_firex")
+health = 16
+effect_type = 0
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[resource]
+script = ExtResource("4_pyenb")
+name = "Quick Feast"
+description = "The goblin pulls out a piece of dried meat from its pocket and devours it to regain some strength."
+cost = Array[ExtResource("1_1fp3t")]([SubResource("Resource_8y1hv")])
+type = 4
+cooldown = 0
+corruption_increase = 0
+effects = Array[ExtResource("1_1fp3t")]([SubResource("Resource_v2o0m")])
+target_type = "Single"
+animation = "None"
+sound_effect = "None"

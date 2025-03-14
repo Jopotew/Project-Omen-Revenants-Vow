@@ -2,10 +2,10 @@ extends Node2D
 
 const PLAYER_SCENE = preload("res://scenes/characters/player.tscn")
 const BASIC_ENEMY_MODEL_1 = preload("res://scenes/characters/basic_enemy_model_1.tscn")
-
+const GOBLIN = preload("res://scenes/npcs/enemies/goblin.tscn")
 ## Configuración de combate (deben haber 1-3 enemigos, aliados opcionales)
-var allies = [BASIC_ENEMY_MODEL_1] 
-var enemies = [BASIC_ENEMY_MODEL_1, BASIC_ENEMY_MODEL_1]
+var allies = [] 
+var enemies = [GOBLIN, GOBLIN]
 
 
 

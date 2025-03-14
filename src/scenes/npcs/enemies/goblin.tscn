@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsmhdnceli7rg"]
+
+[ext_resource type="Script" path="res://scripts/resource_models/Characters/npc_base_model.gd" id="1_vd6d2"]
+[ext_resource type="Resource" uid="uid://brnoh11pyj5g1" path="res://resources/npcs/enemies/goblin/battle_condition.tres" id="2_oqly8"]
+[ext_resource type="Resource" uid="uid://c0hauqh851pdx" path="res://resources/npcs/enemies/goblin/character_stats.tres" id="3_1h7vb"]
+[ext_resource type="Texture2D" uid="uid://df6wwpdsmh60e" path="res://assets/goblin.webp" id="4_jcu1i"]
+
+[node name="Goblin" type="Node2D"]
+script = ExtResource("1_vd6d2")
+battle_conditions = ExtResource("2_oqly8")
+stats = ExtResource("3_1h7vb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_jcu1i")

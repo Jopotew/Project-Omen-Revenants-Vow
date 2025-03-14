@@ -119,7 +119,7 @@ func get_combatant_texture(combatant, group_child):
             if char_sprite and char_sprite.texture:
                 
                 txt_rect.texture = char_sprite.texture
-                var dimensions = combatant.get_dimensions()
+                var dimensions = combatant.stats.get_dimensions()
                 
                 txt_rect.custom_minimum_size = dimensions
                 txt_rect.size = dimensions

@@ -2,11 +2,6 @@ extends Node
 class_name CombatActionManager
 
 
-
-var player
-var target
-var action
-
 func command_action(player, target, action_selected, action_type):
     var player_actions = get_actions_available(player, action_type)
     for resource in player_actions:

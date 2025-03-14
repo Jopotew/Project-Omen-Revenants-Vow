@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpy0573htfpfp"]
 
 [ext_resource type="Texture2D" uid="uid://bfmmddkqlxuxp" path="res://assets/enemigo 3.png" id="1_6skul"]
-[ext_resource type="Script" path="res://scripts/characters/character_base_model.gd" id="1_t2vqy"]
+[ext_resource type="Script" path="res://scripts/resource_models/Characters/npc_base_model.gd" id="1_t2vqy"]
 [ext_resource type="Resource" uid="uid://bucrjoirxrksn" path="res://resources/characters/enemy_model.tres" id="2_848fi"]
 
 [node name="BasicEnemyModel1" type="Node2D"]

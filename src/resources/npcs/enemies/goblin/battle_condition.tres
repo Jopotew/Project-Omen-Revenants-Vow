@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="BattleConditions" load_steps=11 format=3 uid="uid://brnoh11pyj5g1"]
+
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/ability_model.gd" id="1_srhad"]
+[ext_resource type="Resource" uid="uid://cyr0ael274qij" path="res://resources/npcs/enemies/goblin/abilities/dirty_stab.tres" id="2_44ta0"]
+[ext_resource type="Resource" uid="uid://cmyh5d6vq7ory" path="res://resources/npcs/enemies/goblin/abilities/cowards_cry.tres" id="2_a5ire"]
+[ext_resource type="Script" path="res://scripts/resource_models/Characters/character_battle_vars.gd" id="2_xjbyl"]
+[ext_resource type="Resource" uid="uid://b4jjyyrwwhuwo" path="res://resources/npcs/enemies/goblin/abilities/desperate_punch.tres" id="3_crom2"]
+[ext_resource type="Resource" uid="uid://b7oitixdhnstu" path="res://resources/npcs/enemies/goblin/abilities/quick_feast.tres" id="4_0st5v"]
+[ext_resource type="Resource" uid="uid://crytwdcnniy4w" path="res://resources/npcs/enemies/goblin/abilities/filthy_venom.tres" id="5_uaxcy"]
+[ext_resource type="Resource" uid="uid://c1buetldxgijr" path="res://resources/npcs/enemies/goblin/abilities/malicious_strike.tres" id="6_ju3sh"]
+[ext_resource type="Resource" uid="uid://dtfdtvocpbepn" path="res://resources/npcs/enemies/goblin/abilities/goblin_frenzy.tres" id="8_8yxkw"]
+[ext_resource type="Resource" uid="uid://crb4vif5y1iv3" path="res://resources/npcs/enemies/goblin/abilities/im_the_king.tres" id="9_dninj"]
+
+[resource]
+script = ExtResource("2_xjbyl")
+is_alive = true
+in_combat = false
+action_turn = false
+turns_inactive = 0
+skills = Array[ExtResource("1_srhad")]([ExtResource("5_uaxcy"), ExtResource("2_a5ire")])
+combat_skills = Array[ExtResource("1_srhad")]([ExtResource("2_a5ire"), ExtResource("5_uaxcy"), ExtResource("4_0st5v"), ExtResource("6_ju3sh"), ExtResource("8_8yxkw"), ExtResource("9_dninj")])
+items = []
+combat_items = []
+combat_attacks = Array[ExtResource("1_srhad")]([ExtResource("2_44ta0"), ExtResource("3_crom2")])

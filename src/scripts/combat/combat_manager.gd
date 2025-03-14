@@ -83,7 +83,7 @@ func set_action_turn(char_turn: Node2D):
 
     :param char_turn: Nodo del combatiente cuyo turno está activo.
     """
-    char_turn.set_action_turn(true)  # Activa el turno del personaje
+    char_turn.battle_conditions.set_action_turn(true)  # Activa el turno del personaje
 
     if char_turn.name == "Player":
         handle_player_turn()
@@ -186,7 +186,7 @@ func set_target_highlight(control_node: Control, visible: bool):
         if target and combatant_targeted:
             target.set_visible(visible)
 
-            var dimensions = combatant_targeted.get_dimensions()
+            var dimensions = combatant_targeted.stats.get_dimensions()
             target.custom_minimum_size = dimensions
             target.size = dimensions
             target.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED

@@ -1,47 +1,17 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=9 format=3 uid="uid://rqcvaf74ivg2"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://rqcvaf74ivg2"]
 
-[ext_resource type="Script" path="res://scripts/models/Characters/character_stats.gd" id="1_kga2s"]
-[ext_resource type="Script" path="res://scripts/models/effects/ability_model.gd" id="1_nr51m"]
-[ext_resource type="Script" path="res://scripts/models/effects/effect_model.gd" id="2_xup1o"]
-[ext_resource type="Script" path="res://scripts/models/effects/health/decrease_health.gd" id="3_vcgc5"]
-[ext_resource type="Script" path="res://scripts/models/effects/status/cc_effect.gd" id="4_ec7d5"]
-
-[sub_resource type="Resource" id="Resource_hw0hv"]
-script = ExtResource("3_vcgc5")
-health = 5
-effect_type = 0
-elemental_type = 0
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_yiwwy"]
-script = ExtResource("4_ec7d5")
-duration = 1
-effect_type = 0
-elemental_type = 0
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_q6i40"]
-script = ExtResource("1_nr51m")
-name = "Marcel"
-description = "Marcel"
-cost = Array[ExtResource("2_xup1o")]([SubResource("Resource_hw0hv")])
-cooldown = 1
-corruption_increase = 0
-effects = Array[ExtResource("2_xup1o")]([SubResource("Resource_yiwwy")])
-target_type = "Single"
-animation = "None"
-sound_effect = "None"
+[ext_resource type="Script" path="res://scripts/resource_models/Characters/character_stats.gd" id="1_06mwt"]
 
 [resource]
-script = ExtResource("1_kga2s")
+script = ExtResource("1_06mwt")
 name = "Jopote"
 level = 5
 experiencie = 0.0
-exp_multiplier = 1.5
+exp_multiplier = 1.0
+is_controllable = true
 health = 100
 max_health = 100
+speed = 20
 mana = 50
 max_mana = 50
 physical_attack = 10
@@ -50,21 +20,10 @@ magic_attack = 5
 crit_chance = 0.0
 physical_defense = 5
 magic_defense = 0
-speed = 15
 affected_by_effect = false
-is_alive = true
-is_controllable = true
-action_turn = false
-turns_inactive = 0
-in_combat = false
 corruption = 0
 corruption_multiplier = 0
 resistance_to_corruption = 0
 is_corrupted = false
-skills = Array[ExtResource("1_nr51m")]([])
-combat_skills = Array[ExtResource("1_nr51m")]([SubResource("Resource_q6i40")])
-items = []
-combat_items = []
-combat_attacks = Array[ExtResource("1_nr51m")]([])
 width = 100
 height = 150

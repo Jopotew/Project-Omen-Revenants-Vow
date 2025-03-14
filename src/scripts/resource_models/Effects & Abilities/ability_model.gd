@@ -15,6 +15,9 @@ class_name Ability
 ## The amount of energy, mana, or action points required to use this skill.
 @export var cost: Array[Effect] 
 
+@export var type: Enums.AffectType
+
+
 ## Number of turns required to recharge this skill after use.
 @export var cooldown: int = 0  
 

@@ -63,8 +63,8 @@ func state_death(npc, target):
 
 
 ##Devuelve el estado de combate del npc. Siendo True si es su turno, False si no.
-func is_my_turn(npc) -> bool:
-    return npc.combat_stats.action_turn
+func is_my_turn(npc_combat_stats) -> bool:
+    return npc_combat_stats.action_turn
 
 func get_health_threshold(entity) -> int:
     var ratio = float(entity.health) / entity.max_health

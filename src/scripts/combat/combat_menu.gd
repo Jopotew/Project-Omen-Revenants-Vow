@@ -83,13 +83,13 @@ func _on_skills_pressed() -> void:
     open_menu(skills_menu)
 
 func _on_back_pressed() -> void:
-    go_back(actual_menu)    
+    go_back()    
 
 func open_menu(new_menu):
     new_menu.set_visible(true)
     options_menu.set_visible(false)
     
-func go_back(actual_menu):
+func go_back():
     options_menu.set_visible(true)
     actual_menu.set_visible(false)
     

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3rnum2eibhvt" path="res://assets/bg.png" id="1_wkyfr"]
 [ext_resource type="PackedScene" uid="uid://b56cq2nhrp0jk" path="res://scenes/combat_scenes/character_placement.tscn" id="3_6gf60"]
 [ext_resource type="PackedScene" uid="uid://e4mf1o0bfbce" path="res://scenes/combat_scenes/combat_menu.tscn" id="3_w44lj"]
-[ext_resource type="Script" path="res://scripts/models/Characters/action_manager.gd" id="5_3m0i2"]
+[ext_resource type="Script" path="res://scripts/combat/action_manager.gd" id="5_3m0i2"]
 [ext_resource type="Script" path="res://scripts/combat_queue/combat_queue.gd" id="6_roth1"]
 [ext_resource type="Script" path="res://scripts/combat/combat_manager.gd" id="7_yfwgt"]
 

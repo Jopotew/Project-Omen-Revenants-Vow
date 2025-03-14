@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=11 format=3 uid="uid://crb4vif5y1iv3"]
+
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/effect_model.gd" id="1_xqu13"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/mana/decrease_mana.gd" id="2_nj6a2"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/defense/increase_defense.gd" id="3_40n1o"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/speed/decrease_speed.gd" id="4_gekpe"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/damage/increase_damage.gd" id="5_fmi12"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/ability_model.gd" id="6_e4hkr"]
+
+[sub_resource type="Resource" id="Resource_2tx0v"]
+script = ExtResource("2_nj6a2")
+mana = 10
+effect_type = 6
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[sub_resource type="Resource" id="Resource_6gi30"]
+script = ExtResource("3_40n1o")
+defense = 15
+type = 1
+effect_type = 0
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[sub_resource type="Resource" id="Resource_fi348"]
+script = ExtResource("4_gekpe")
+speed = 10
+effect_type = 1
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[sub_resource type="Resource" id="Resource_btlxh"]
+script = ExtResource("5_fmi12")
+damage = 10
+type = 1
+effect_type = 0
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[resource]
+script = ExtResource("6_e4hkr")
+name = "I'm the KING!"
+description = "Convinced of its own greatness, the goblin boasts and provokes enemies into attacking it."
+cost = Array[ExtResource("1_xqu13")]([SubResource("Resource_2tx0v")])
+type = 0
+cooldown = 0
+corruption_increase = 0
+effects = Array[ExtResource("1_xqu13")]([SubResource("Resource_6gi30"), SubResource("Resource_fi348"), SubResource("Resource_btlxh")])
+target_type = "Single"
+animation = "None"
+sound_effect = "None"

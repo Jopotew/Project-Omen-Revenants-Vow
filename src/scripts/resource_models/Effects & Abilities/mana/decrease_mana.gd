@@ -1,7 +1,7 @@
 extends Effect
 class_name DecreaseManaEffect
 
-var mana: int 
+@export var mana: int 
 
 
 

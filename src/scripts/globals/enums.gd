@@ -9,7 +9,9 @@ enum AffectType{
     Attack = 2, 
     CC = 3, 
     Heal = 4, 
-    Corruption = 5
+    Corruption = 5,
+    Consumption =6,
+    Vamp = 7 
 }
 enum ElementalType {
     Fire = 0,

@@ -1,8 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://djnef0yqgf1f6"]
+[gd_scene load_steps=12 format=3 uid="uid://djnef0yqgf1f6"]
 
-[ext_resource type="Script" path="res://scripts/characters/player.gd" id="1_sc3lm"]
+[ext_resource type="Script" path="res://scripts/resource_models/Characters/player.gd" id="1_sc3lm"]
 [ext_resource type="Resource" uid="uid://rqcvaf74ivg2" path="res://resources/characters/jopote.tres" id="2_icht3"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/ability_model.gd" id="2_mdwqm"]
 [ext_resource type="Texture2D" uid="uid://dvfdu3b62x2qr" path="res://assets/player.png" id="3_1nrgh"]
+[ext_resource type="Script" path="res://scripts/resource_models/Characters/character_battle_vars.gd" id="3_pt82d"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/effect_model.gd" id="4_umbjk"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/mana/decrease_mana.gd" id="5_o24kk"]
+
+[sub_resource type="Resource" id="Resource_iq2v4"]
+script = ExtResource("5_o24kk")
+mana = 10
+effect_type = 0
+elemental_type = 0
+animation = ""
+sound_effect = ""
+
+[sub_resource type="Resource" id="Resource_y2v68"]
+script = ExtResource("2_mdwqm")
+name = "Holy Fire"
+description = "No description"
+cost = Array[ExtResource("4_umbjk")]([SubResource("Resource_iq2v4")])
+type = 0
+cooldown = 0
+corruption_increase = 0
+effects = Array[ExtResource("4_umbjk")]([])
+target_type = "Single"
+animation = "None"
+sound_effect = "None"
+
+[sub_resource type="Resource" id="Resource_4sp1w"]
+script = ExtResource("3_pt82d")
+is_alive = true
+in_combat = false
+action_turn = false
+turns_inactive = 0
+skills = Array[ExtResource("2_mdwqm")]([])
+combat_skills = Array[ExtResource("2_mdwqm")]([SubResource("Resource_y2v68")])
+items = []
+combat_items = []
+combat_attacks = Array[ExtResource("2_mdwqm")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttfsv"]
 size = Vector2(219.595, 446.008)
@@ -11,6 +48,7 @@ size = Vector2(219.595, 446.008)
 position = Vector2(-4.76837e-07, -3.8147e-06)
 scale = Vector2(0.00753764, 0.00753764)
 script = ExtResource("1_sc3lm")
+battle_conditions = SubResource("Resource_4sp1w")
 stats = ExtResource("2_icht3")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
