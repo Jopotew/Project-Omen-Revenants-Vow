@@ -32,6 +32,16 @@ func set_action_turn(value: bool) -> void:
     action_turn = value
 
 
+@export var combat_action: Ability
+func get_combat_action():
+    return combat_action
+    
+func set_combat_action(value):
+    combat_action = value
+
+
+
+
 @export var turns_inactive: int = 0
 ## Obtiene la cantidad de turnos en los que el personaje permanece inactivo.
 func get_turns_inactive() -> int:

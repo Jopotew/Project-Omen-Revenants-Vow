@@ -18,7 +18,7 @@ class_name Ability
 @export var type: Enums.AffectType
 
 
-@export var state: Enums.CombatState
+@export var state: Enums.CombatState = Enums.CombatState.NONE
 
 ## Number of turns required to recharge this skill after use.
 @export var cooldown: int = 0  
