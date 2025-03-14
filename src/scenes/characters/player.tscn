@@ -23,6 +23,7 @@ name = "Holy Fire"
 description = "No description"
 cost = Array[ExtResource("4_umbjk")]([SubResource("Resource_iq2v4")])
 type = 0
+state = 0
 cooldown = 0
 corruption_increase = 0
 effects = Array[ExtResource("4_umbjk")]([])

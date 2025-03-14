@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://rqcvaf74ivg2"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://rqcvaf74ivg2"]
 
 [ext_resource type="Script" path="res://scripts/resource_models/Characters/character_stats.gd" id="1_06mwt"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/effect_model.gd" id="1_y3iqt"]
 
 [resource]
 script = ExtResource("1_06mwt")
@@ -21,6 +22,7 @@ crit_chance = 0.0
 physical_defense = 5
 magic_defense = 0
 affected_by_effect = false
+effects_applied = Array[ExtResource("1_y3iqt")]([])
 corruption = 0
 corruption_multiplier = 0
 resistance_to_corruption = 0

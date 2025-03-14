@@ -45,13 +45,13 @@ func state_arrogance(npc, target):
                 Enums.AffectType.Buff:
                     buffs.append(skill)
     
-    # Determinar qué acción tomar
+    
     var chosen_action = null
 
     if roll < 0.66 and buffs.size() > 0:
-        chosen_action = buffs.pick_random()  # Elige un buff aleatorio si hay disponibles
+        chosen_action = buffs.pick_random() 
     elif attacks.size() > 0:
-        chosen_action = attacks.pick_random()  # Elige un ataque aleatorio si hay disponibles
+        chosen_action = attacks.pick_random()  
     
     if chosen_action != null:
         npc.battle_conditions.set_combat_action(chosen_action)
@@ -68,7 +68,7 @@ func state_berserk(npc, target):
     var berserk_attacks: Array[Ability] = []
     var berserk_buffs: Array[Ability] = []
 
-    # Clasificar habilidades según su tipo
+    
     for skill in skills:
         if skill.state == Enums.CombatState.BERSERK:
             match skill.type:
@@ -90,14 +90,86 @@ func state_berserk(npc, target):
         current_state = Enums.NPCStates.DECISION
         
     else:
-        npc.battle_conditions.set_combat_actions(chosen_action)
+        npc.battle_conditions.set_combat_action(chosen_action)
         current_state = Enums.NPCStates.ACTION
     
-          
-            
-      
+func state_decision(npc, target):
+    var roll = get_prob()
+    var skills = npc.battle_conditions.get_combat_skills()  
+    var attacks = npc.battle_conditions.get_combat_attacks()  
+
+    var attack_skills: Array[Ability] = []
+    var decision_buffs: Array[Ability] = []
+    var decision_debuffs: Array[Ability] = []
+    var decision_heals: Array[Ability] = []
+
+    
+    for skill in skills:
+        if skill.state == Enums.CombatState.NONE:
+            match skill.type:
+                Enums.AffectType.Attack:
+                    attack_skills.append(skill)  
+                Enums.AffectType.Buff:
+                    decision_buffs.append(skill)
+                Enums.AffectType.Debuff:
+                    decision_debuffs.append(skill)
+                Enums.AffectType.Heal:
+                    decision_heals.append(skill)
+
+    var chosen_action = null
+   
+    if roll < 0.50 and attacks.size() > 0:
+        chosen_action = attacks.pick_random()
+
+    else:
+        var skill_roll = get_prob()
+
+        if skill_roll < 0.20 and decision_buffs.size() > 0:
+            chosen_action = decision_buffs.pick_random()  
+        elif skill_roll < 0.40 and decision_debuffs.size() > 0:
+            chosen_action = decision_debuffs.pick_random()  
+        elif skill_roll < 0.90 and attack_skills.size() > 0:
+            chosen_action = attack_skills.pick_random()  
+        elif decision_heals.size() > 0:
+            chosen_action = decision_heals.pick_random() 
+
+   
+    if chosen_action == null and attacks.size() > 0:
+        chosen_action = attacks.pick_random()
+
+    
+    npc.battle_conditions.set_combat_action(chosen_action)
+    current_state = Enums.NPCStates.ACTION
+
 
             
+func state_action(npc, target):
+    var chosen_action = npc.battle_conditions.get_combat_action()
+
+    if chosen_action == null:
+        print("No hay acción seleccionada en ACTION. Pasando a END_TURN.")
+        current_state = Enums.NPCStates.END_TURN
+        return
+
+    if chosen_action is Ability:
+        print(npc.stats.name + " usa " + chosen_action.name + " contra " + target.stats.name)
+        chosen_action.apply(npc, target)
+    else:
+        print("Acción desconocida en ACTION:", chosen_action)
+
+    current_state = Enums.NPCStates.END_TURN
+    
+    
+func state_end_turn(npc, target):
+   
+    if npc.combat_manager:
+        npc.combat_manager.process_end_turn(npc)
+
+    
+    npc.battle_conditions.set_action_turn(false)
+    npc.combat_manager.next_turn()
+    current_state = Enums.NPCStates.IDLE
+
     
             
             

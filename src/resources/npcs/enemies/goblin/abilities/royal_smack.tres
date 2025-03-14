@@ -41,6 +41,7 @@ name = "Royal Smack "
 description = "The goblin, full of overconfidence, slaps its enemy with the back of its hand, mocking them while asserting dominance."
 cost = Array[ExtResource("1_14tow")]([SubResource("Resource_l4dxx")])
 type = 2
+state = 0
 cooldown = 0
 corruption_increase = 0
 effects = Array[ExtResource("1_14tow")]([SubResource("Resource_4v8r7"), SubResource("Resource_1dnoe")])
