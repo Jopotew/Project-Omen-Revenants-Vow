@@ -12,6 +12,7 @@
 script = ExtResource("5_o24kk")
 mana = 10
 effect_type = 0
+duration = 0
 elemental_type = 0
 animation = ""
 sound_effect = ""

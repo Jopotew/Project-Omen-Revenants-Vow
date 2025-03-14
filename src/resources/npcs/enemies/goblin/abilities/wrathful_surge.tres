@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=11 format=3 uid="uid://doe0glvmif2s0"]
+
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/effect_model.gd" id="1_fgsjb"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/mana/decrease_mana.gd" id="2_2gf6m"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/damage/increase_damage.gd" id="3_f7qsl"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/health/increase_health.gd" id="4_g2ijw"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/defense/decrease_defense.gd" id="5_c6t2n"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/ability_model.gd" id="6_e7o1v"]
+
+[sub_resource type="Resource" id="Resource_6kwwd"]
+script = ExtResource("2_2gf6m")
+mana = 0
+effect_type = 6
+duration = 0
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[sub_resource type="Resource" id="Resource_7tfhy"]
+script = ExtResource("3_f7qsl")
+damage = 10
+type = 1
+effect_type = 0
+duration = 0
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[sub_resource type="Resource" id="Resource_xxfcq"]
+script = ExtResource("4_g2ijw")
+health = 15
+effect_type = 4
+duration = 0
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[sub_resource type="Resource" id="Resource_cwd8k"]
+script = ExtResource("5_c6t2n")
+defense = 6
+type = 1
+effect_type = 1
+duration = 0
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[resource]
+script = ExtResource("6_e7o1v")
+name = "Wrathful Surge"
+description = "Overcome by uncontrollable rage, the goblin’s attacks become wilder and stronger, but it loses control of its own defense."
+cost = Array[ExtResource("1_fgsjb")]([SubResource("Resource_6kwwd")])
+type = 0
+cooldown = 0
+corruption_increase = 0
+effects = Array[ExtResource("1_fgsjb")]([SubResource("Resource_7tfhy"), SubResource("Resource_xxfcq"), SubResource("Resource_cwd8k")])
+target_type = "Single"
+animation = "None"
+sound_effect = "None"

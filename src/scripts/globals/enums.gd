@@ -40,6 +40,13 @@ enum NPCStates {
 }
 
 
+
+enum CombatState{
+    NONE,
+    BERSERK,
+    ARROGANCE      
+}
+
 enum HealthThreshold {
     HIGH,
     MEDIUM,

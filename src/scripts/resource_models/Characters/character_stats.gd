@@ -165,13 +165,24 @@ func set_affected_by_effect(value: bool) -> void:
     affected_by_effect = value
 
 
-@export var effect: Effect
-func get_effect() -> Effect:
-    return effect
+@export var effects_applied: Array[Effect]
+func get_effect() -> Array:
+    return effects_applied
 
 func set_effect(value: Effect) -> void:
-    effect = value
+    effects_applied.append(value)
 
+func effect_turns_left(target):
+    for effect in effects_applied:
+        if effect.duration == 0:
+            remove_effect(effect)
+        else:
+            effect.duration -= 1
+            effect.apply(target)
+            
+
+func remove_effect(effect):
+    effects_applied.erase(effect)
 
 
 @export var corruption: int = 0

@@ -78,7 +78,13 @@ func get_health_threshold(entity) -> int:
         return Enums.HealthThreshold.VERY_LOW
 
 
-
+func get_npc_skills(npc) -> Array:
+    var skills: Array[Ability]= npc.battle_conditions.get_combat_skills()
+    return skills
+    
+func get_npc_attacks(npc) -> Array:
+    var attacks: Array[Ability] = npc.battle_conditions.get_combat_attacks()
+    return attacks
 
 func get_prob():
     return randf_range(0, 1)

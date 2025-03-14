@@ -32,7 +32,8 @@ func state_idle(npc, target):
 ## ARROGANCE: cree que ganará fácilmente; toma una acción agresiva.
 func state_arrogance(npc, target):
     var roll = get_prob()
-    var skills = npc.get_combat_skills()
+    var skills = get_npc_skills(npc)
+    var attacks = get_npc_attacks(npc)
     # Ej: 70% big attack, 30% 'taunt'
     if roll < 0.70:
         npc.chosen_action = "big_attack"

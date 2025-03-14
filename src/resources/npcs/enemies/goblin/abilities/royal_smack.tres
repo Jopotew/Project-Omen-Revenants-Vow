@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=9 format=3 uid="uid://4prmkvaxecyx"]
+
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/effect_model.gd" id="1_14tow"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/mana/decrease_mana.gd" id="2_6wt7x"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/attack/attack.gd" id="3_q62k8"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/damage/decrease_damage.gd" id="4_8r7tc"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/ability_model.gd" id="5_58db6"]
+
+[sub_resource type="Resource" id="Resource_l4dxx"]
+script = ExtResource("2_6wt7x")
+mana = 10
+effect_type = 6
+duration = 0
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[sub_resource type="Resource" id="Resource_4v8r7"]
+script = ExtResource("3_q62k8")
+damage = 15
+type = 1
+effect_type = 2
+duration = 0
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[sub_resource type="Resource" id="Resource_1dnoe"]
+script = ExtResource("4_8r7tc")
+damage = 5
+type = 1
+effect_type = 1
+duration = 0
+elemental_type = 11
+animation = ""
+sound_effect = ""
+
+[resource]
+script = ExtResource("5_58db6")
+name = "Royal Smack "
+description = "The goblin, full of overconfidence, slaps its enemy with the back of its hand, mocking them while asserting dominance."
+cost = Array[ExtResource("1_14tow")]([SubResource("Resource_l4dxx")])
+type = 2
+cooldown = 0
+corruption_increase = 0
+effects = Array[ExtResource("1_14tow")]([SubResource("Resource_4v8r7"), SubResource("Resource_1dnoe")])
+target_type = "Single"
+animation = "None"
+sound_effect = "None"
