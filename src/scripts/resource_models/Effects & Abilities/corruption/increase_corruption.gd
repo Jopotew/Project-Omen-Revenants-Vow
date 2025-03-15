@@ -12,4 +12,4 @@ func _init() -> void:
     
 
 func apply(target):
-    target.increase_corruption(corruption)
+    target.combat_stats.increase_corruption(corruption)

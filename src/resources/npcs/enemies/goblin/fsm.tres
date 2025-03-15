@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="GoblinFSM" load_steps=2 format=3 uid="uid://d4jisvu3tq7hh"]
+
+[ext_resource type="Script" path="res://scripts/resource_models/NpcIA/Npcs/goblin_model.gd" id="1_wei20"]
+
+[resource]
+script = ExtResource("1_wei20")

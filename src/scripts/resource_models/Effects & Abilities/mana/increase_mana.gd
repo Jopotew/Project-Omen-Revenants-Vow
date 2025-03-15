@@ -4,4 +4,4 @@ class_name IncreaseManaEffect
 var mana: int 
 
 func apply(target):
-    target.increase_combat_mana(mana)
+    target.combat_stats.increase_combat_mana(mana)

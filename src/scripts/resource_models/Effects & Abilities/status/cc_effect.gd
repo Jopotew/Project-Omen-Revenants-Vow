@@ -7,4 +7,4 @@ func _init() -> void:
     
 
 func apply(target):
-    target.pass_turn(duration)
+    target.battle_conditions.set_turns_inactive(duration)

@@ -8,4 +8,4 @@ func _init() -> void:
     name = "Decrease Defense"
 
 func apply(target):
-    target.decrease_defense(defense, type)
+    target.combat_stats.decrease_defense(defense, type)

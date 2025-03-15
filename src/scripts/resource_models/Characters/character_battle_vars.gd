@@ -50,6 +50,13 @@ func get_turns_inactive() -> int:
 ## Establece la cantidad de turnos en los que el personaje permanece inactivo.
 func set_turns_inactive(value: int) -> void:
     turns_inactive = value
+    
+## Maneja el inicio de turno del personaje.
+func on_turn_start():
+    if turns_inactive > 0:
+        turns_inactive -= 1
+        if turns_inactive == 0:
+            action_turn = true
 
 @export var skills: Array[Ability]
 func get_skills() -> Array[Ability]:

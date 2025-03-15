@@ -9,4 +9,4 @@ func _init() -> void:
     name = "Damage Over Time Effect"
     
 func apply(target):
-    target.recieve_damage(damage, type, elemental_type, duration)
+    target.combat_stats.recieve_damage(damage, type, elemental_type)

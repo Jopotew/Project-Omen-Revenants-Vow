@@ -17,4 +17,4 @@ func _init() -> void:
 
 
 func apply(target):
-    target.increase_health(health)
+    target.combat_stats.increase_health(health)

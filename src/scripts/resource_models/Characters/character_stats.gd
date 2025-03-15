@@ -10,6 +10,10 @@ func get_char_name() -> String:
 ## Establece el nombre del personaje.
 func set_char_name(value: String) -> void:
     name = value
+    
+@export var character_role: Enums.CharacterRole
+
+@export var character_element: Enums.ElementalType
 
 
 @export var level: int = 1
@@ -237,8 +241,6 @@ func get_dimensions() -> Vector2:
     return Vector2(width, height)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 ## Sube de nivel al personaje y mejora sus estadísticas.
 func level_up() -> void:
     set_level(level + 1)
@@ -250,3 +252,160 @@ func level_up() -> void:
     set_magic_defense(magic_defense + 1)
     set_health(max_health)
     set_mana(max_mana)
+    
+    
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Recibe daño considerando el tipo y la afinidad elemental.
+func recieve_damage(damage: int, type: Enums.DamageType, elemental_type: Enums.ElementalType):
+    var checked_damage = check_element_affinity(elemental_type, damage)
+    
+    if type == Enums.DamageType.Magic:
+        calculate_damage(checked_damage, magic_defense)
+    elif type == Enums.DamageType.Physical:
+        calculate_damage(checked_damage, physical_defense)
+    else:
+        calculate_damage(checked_damage)
+        
+
+## Calcula el daño recibido en base a la defensa del personaje.
+func calculate_damage(checked_damage, defense_type = null):
+    
+    if checked_damage == 0:
+        checked_damage = 1
+    if defense_type == 0:
+        defense_type = 1
+        
+ 
+    if defense_type == null:
+        health -= checked_damage
+    
+    else:
+        health -= max(1, checked_damage / defense_type)
+
+## Modifica el daño basado en la afinidad elemental.
+func check_element_affinity(elemental_type: Enums.ElementalType, damage: int) -> int:
+    var element_affinity = ElementAffinity.new()
+    var effectiveness = element_affinity.element_effectiveness(elemental_type, character_element)
+    return int(damage * effectiveness)
+
+## Reduce la salud del personaje.
+func decrease_health(value: int):
+    health = max(0, health - value)
+
+## Aumenta la salud del personaje sin exceder el máximo.
+func increase_health(value: int):
+    health = min(max_health, health + value)
+
+
+## Reduce el maná del personaje.
+func decrease_mana(value: int):
+    mana = max(0, mana - value)
+
+## Aumenta el maná del personaje sin exceder el máximo.
+func increase_mana(value: int):
+    mana = min(max_mana, mana + value)
+
+
+## Reduce la velocidad del personaje.
+func decrease_speed(value: int):
+    speed = max(0, speed - value)
+
+## Aumenta la velocidad del personaje.
+func increase_speed(value: int):
+    speed += value
+
+
+## Reduce el ataque físico del personaje.
+func decrease_physical_attack(value: int):
+    physical_attack = max(0, physical_attack - value)
+
+## Aumenta el ataque físico del personaje.
+func increase_physical_attack(value: int):
+    physical_attack += value
+
+
+## Reduce la precisión del ataque del personaje.
+func decrease_attack_accuracy(value: int):
+    attack_accuracy = max(0, attack_accuracy - value)
+
+## Aumenta la precisión del ataque del personaje.
+func increase_attack_accuracy(value: int):
+    attack_accuracy = min(100, attack_accuracy + value)  # Máximo 100% de precisión
+
+
+## Reduce el ataque mágico del personaje.
+func decrease_magic_attack(value: int):
+    magic_attack = max(0, magic_attack - value)
+
+## Aumenta el ataque mágico del personaje.
+func increase_magic_attack(value: int):
+    magic_attack += value
+
+
+## Reduce la probabilidad de crítico del personaje.
+func decrease_crit_chance(value: float):
+    crit_chance = max(0, crit_chance - value)
+
+## Aumenta la probabilidad de crítico del personaje sin exceder el 100%.
+func increase_crit_chance(value: float):
+    crit_chance = min(100, crit_chance + value)
+
+
+## Modifica el ataque del personaje según el tipo (FÍSICO o MÁGICO)
+func increase_attack(value: int, type: Enums.DamageType):
+    match type:
+        Enums.DamageType.Physical:
+            physical_attack += value
+        Enums.DamageType.Magic:
+            magic_attack += value
+
+func decrease_attack(value: int, type: Enums.DamageType):
+    match type:
+        Enums.DamageType.Physical:
+            physical_attack = max(0, physical_attack - value)
+        Enums.DamageType.Magic:
+            magic_attack = max(0, magic_attack - value)
+
+
+## Modifica la defensa del personaje según el tipo (FÍSICA o MÁGICA)
+func increase_defense(value: int, type: Enums.DefenseType):
+    match type:
+        Enums.DefenseType.Physical:
+            physical_defense += value
+        Enums.DefenseType.Magic:
+            magic_defense += value
+
+func decrease_defense(value: int, type: Enums.DefenseType):
+    match type:
+        Enums.DefenseType.Physical:
+            physical_defense = max(0, physical_defense - value)
+        Enums.DefenseType.Magic:
+            magic_defense = max(0, magic_defense - value)
+
+
+
+## Reduce la corrupción del personaje.
+func decrease_corruption(value: int):
+    corruption = max(0, corruption - value)
+
+## Aumenta la corrupción del personaje.
+func increase_corruption(value: int):
+    corruption += value
+
+
+## Reduce el multiplicador de corrupción.
+func decrease_corruption_multiplier(value: int):
+    corruption_multiplier = max(0, corruption_multiplier - value)
+
+## Aumenta el multiplicador de corrupción.
+func increase_corruption_multiplier(value: int):
+    corruption_multiplier += value
+
+
+## Reduce la resistencia a la corrupción del personaje.
+func decrease_corruption_resistance(value: int):
+    resistance_to_corruption = max(0, resistance_to_corruption - value)
+
+## Aumenta la resistencia a la corrupción del personaje.
+func increase_corruption_resistance(value: int):
+    resistance_to_corruption += value

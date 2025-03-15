@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://c0hauqh851pdx"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://c0hauqh851pdx"]
 
 [ext_resource type="Script" path="res://scripts/resource_models/Characters/character_stats.gd" id="1_dkrsp"]
+[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/effect_model.gd" id="1_vqfqd"]
 
 [resource]
 script = ExtResource("1_dkrsp")
 name = "Trickster Goblin"
+character_role = 1
+character_element = 8
 level = 7
 experiencie = 0.0
 exp_multiplier = 1.0
@@ -21,6 +24,7 @@ crit_chance = 0.0
 physical_defense = 15
 magic_defense = 15
 affected_by_effect = false
+effects_applied = Array[ExtResource("1_vqfqd")]([])
 corruption = 0
 corruption_multiplier = 0
 resistance_to_corruption = 0

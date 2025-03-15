@@ -12,20 +12,31 @@ func state_idle(npc, target):
         # Si el NPC está en HIGH y el objetivo en VERY_LOW => ARROGANCE
         if npc_threshold == Enums.HealthThreshold.HIGH and target_threshold == Enums.HealthThreshold.VERY_LOW or target_threshold == Enums.HealthThreshold.LOW :
             if prob < 0.15:
+                print("ARROGANCE")
                 current_state = Enums.NPCStates.ARROGANCE
+                state_arrogance(npc, target)
             else:
+                print("DECISION")
                 current_state = Enums.NPCStates.DECISION
+                state_decision(npc, target)
         
         # Si el NPC está por debajo de 25% => BERSERK
         elif npc_threshold == Enums.HealthThreshold.VERY_LOW:
             if prob < 0.15:
+                print("BERSERK")
                 current_state = Enums.NPCStates.BERSERK
+                state_berserk(npc, target)
             else:
+                print("DECISION")
                 current_state = Enums.NPCStates.DECISION
+                state_decision(npc, target)
         
         # Caso contrario => DECISION
         else:
+            print("DECISION")
             current_state = Enums.NPCStates.DECISION
+            state_decision(npc, target)
+            
             
             
 ## ARROGANCE: cree que ganará fácilmente; toma una acción agresiva.
@@ -52,13 +63,15 @@ func state_arrogance(npc, target):
         chosen_action = buffs.pick_random() 
     elif attacks.size() > 0:
         chosen_action = attacks.pick_random()  
-    
+    print("CHOSEN ACTION : ", chosen_action)
     if chosen_action != null:
         npc.battle_conditions.set_combat_action(chosen_action)
         current_state = Enums.NPCStates.ACTION
+        state_action(npc, target)
     else:
         print("No hay acciones disponibles en estado ARROGANCE, pasando a acción por defecto.")
         current_state = Enums.NPCStates.DECISION
+        state_decision(npc, target)
 
             
 func state_berserk(npc, target):
@@ -85,13 +98,15 @@ func state_berserk(npc, target):
     elif berserk_buffs.size() > 0:
         chosen_action = berserk_buffs.pick_random()  
         
-        
+    print("CHOSEN ACTION : ", chosen_action.name)    
     if chosen_action == null:
         current_state = Enums.NPCStates.DECISION
+        state_decision(npc, target)
         
     else:
         npc.battle_conditions.set_combat_action(chosen_action)
         current_state = Enums.NPCStates.ACTION
+        state_action(npc, target)
     
 func state_decision(npc, target):
     var roll = get_prob()
@@ -105,6 +120,7 @@ func state_decision(npc, target):
 
     
     for skill in skills:
+        
         if skill.state == Enums.CombatState.NONE:
             match skill.type:
                 Enums.AffectType.Attack:
@@ -117,7 +133,7 @@ func state_decision(npc, target):
                     decision_heals.append(skill)
 
     var chosen_action = null
-   
+    
     if roll < 0.50 and attacks.size() > 0:
         chosen_action = attacks.pick_random()
 
@@ -133,13 +149,14 @@ func state_decision(npc, target):
         elif decision_heals.size() > 0:
             chosen_action = decision_heals.pick_random() 
 
-   
+    print("CHOSEN ACTION : ", chosen_action.name)
     if chosen_action == null and attacks.size() > 0:
         chosen_action = attacks.pick_random()
 
     
     npc.battle_conditions.set_combat_action(chosen_action)
     current_state = Enums.NPCStates.ACTION
+    state_action(npc, target)
 
 
             
@@ -158,16 +175,14 @@ func state_action(npc, target):
         print("Acción desconocida en ACTION:", chosen_action)
 
     current_state = Enums.NPCStates.END_TURN
+    state_end_turn(npc, target)
     
     
 func state_end_turn(npc, target):
-   
-    if npc.combat_manager:
-        npc.combat_manager.process_end_turn(npc)
-
-    
+    print("")
+    print("")
     npc.battle_conditions.set_action_turn(false)
-    npc.combat_manager.next_turn()
+    emit_signal("turn_ended")
     current_state = Enums.NPCStates.IDLE
 
     

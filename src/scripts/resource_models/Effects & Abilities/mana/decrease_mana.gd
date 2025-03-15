@@ -11,4 +11,4 @@ func _init() -> void:
     
 
 func apply(target):
-    target.decrease_combat_mana(mana)
+    target.combat_stats.decrease_mana(mana)

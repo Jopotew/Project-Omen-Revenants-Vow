@@ -13,4 +13,4 @@ func _init() -> void:
 
 
 func apply(target):
-    target.increase_defense(defense, type)
+    target.combat_stats.increase_defense(defense, type)

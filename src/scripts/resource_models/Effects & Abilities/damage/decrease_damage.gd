@@ -13,4 +13,4 @@ func _init() -> void:
 
 
 func apply(target):
-    target.decrease_damage(damage, type)
+    target.combat_stats.decrease_attack(damage, type)

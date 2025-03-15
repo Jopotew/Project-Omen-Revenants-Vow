@@ -11,4 +11,4 @@ func _init() -> void:
     
 
 func apply(target):
-    target.decrease_corruption(corruption)
+    target.combat_stats.decrease_corruption(corruption)

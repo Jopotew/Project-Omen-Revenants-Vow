@@ -11,4 +11,4 @@ func _init() -> void:
 
 
 func apply(target):
-    target.decrease_speed(speed)
+    target.combat_stats.decrease_speed(speed)

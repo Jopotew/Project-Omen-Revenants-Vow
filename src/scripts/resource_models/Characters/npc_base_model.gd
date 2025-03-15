@@ -3,6 +3,8 @@ extends Node2D
 
 @export var battle_conditions: BattleConditions
 @export var stats: CharacterStats
+@export var fsm: BaseNpcFSM
+
 var combat_stats: CharacterStats
 
 
@@ -76,17 +78,17 @@ func increase_combat_mana(value):
 
 ## Pasa el turno del personaje por una cantidad específica de rondas.
 func turns_inactive(duration: int):
-    combat_stats.turns_inactive = duration
-    combat_stats.action_turn = false
+    battle_conditions.turns_inactive = duration
+    battle_conditions.action_turn = false
 
 ## Maneja el inicio de turno del personaje.
 func on_turn_start():
-    if combat_stats.turns_inactive > 0:
-        combat_stats.turns_inactive -= 1
-        if combat_stats.turns_inactive == 0:
-            combat_stats.action_turn = true
+    if battle_conditions.turns_inactive > 0:
+        battle_conditions.turns_inactive -= 1
+        if battle_conditions.turns_inactive == 0:
+            battle_conditions.action_turn = true
 
-
+  
 
 func random_number():
     return randi_range(1, 100)

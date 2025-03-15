@@ -39,7 +39,12 @@ enum NPCStates {
     DEATH
 }
 
-
+enum CharacterRole{
+    ALLY, 
+    ENEMY,
+    PLAYER,
+    NEUTRAL
+}
 
 enum CombatState{
     NONE,

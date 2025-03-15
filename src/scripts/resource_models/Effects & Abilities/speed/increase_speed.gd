@@ -9,4 +9,4 @@ func _init() -> void:
 
 
 func apply(target):
-    target.increase_speed(speed)
+    target.combat_stats.increase_speed(speed)

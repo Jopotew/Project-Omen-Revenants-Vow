@@ -86,6 +86,7 @@ func set_action_turn(char_turn: Node2D):
     char_turn.battle_conditions.set_action_turn(true)  # Activa el turno del personaje
 
     if char_turn.name == "Player":
+        print(player.stats.health)
         handle_player_turn()
     else:
         handle_enemy_turn(char_turn)
@@ -103,12 +104,15 @@ func handle_enemy_turn(npc: Node2D):
 
     :param enemy: Nodo del enemigo que tiene el turno.
     """
+    
     print("Turno del enemigo:", npc.name)
     
-    # Esperar 1.5 segundos antes de que el enemigo realice su acción
-    await get_tree().create_timer(5).timeout  
-    print("JUJUJU PASO EL TURNO DEL ENEMIHGOOOOOOOOOO")
-    npc.execute_action(player)
+    npc.battle_conditions.action_turn = true
+    
+    await get_tree().create_timer(1.5).timeout  
+    
+    npc.fsm.state_idle(npc, get_target())
+    
     end_turn()
 
 
@@ -191,6 +195,16 @@ func set_target_highlight(control_node: Control, visible: bool):
             target.size = dimensions
             target.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
+
+func get_target():
+    var targets_allowed: Array
+    for combatant in combat_list:
+        if combatant.stats.character_role != Enums.CharacterRole.ENEMY:
+            targets_allowed.append(combatant)
+            
+    return targets_allowed.pick_random()
+                
+    
 #====================================================
 # EJECUCIÓN DE ACCIONES
 #====================================================
@@ -238,3 +252,5 @@ func activate_combat_menu():
     for menu in selected_control_node_target.get_children():
         if menu.name == "CombatMenu":
             menu.set_visible(true)
+            
+            

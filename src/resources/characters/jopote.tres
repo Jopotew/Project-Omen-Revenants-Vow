@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_06mwt")
 name = "Jopote"
+character_role = 2
+character_element = 6
 level = 5
 experiencie = 0.0
 exp_multiplier = 1.0
