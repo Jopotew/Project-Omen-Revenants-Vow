@@ -64,7 +64,6 @@ con un % del mismo
 hacer un .new de un effect de heal
 agregarle a recieve_damage() un return del danio para saber cuanto hizo
 
-ver como aplicar a aliados. 
-
+ver como aplicar cosas a aliados. por ejemplo, un buff o heal
 
 """

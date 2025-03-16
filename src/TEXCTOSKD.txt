@@ -1,0 +1,150 @@
+nuevo script que extiende de ability para poder 
+cambiar el apply
+se fija cuanto danio causo y de ahi se aplique un heal al npc.
+con un % del mismo
+hacer un .new de un effect de heal
+agregarle a recieve_damage() un return del danio para saber cuanto hizo
+
+ver como aplicar cosas a aliados. por ejemplo, un buff o heal
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Solucion 1. CODIGO PARA CADA NPC EN ESPECIFICO 
+
+- Hacer que el npc reciba todos los pjs en combate
+	-> Agregar tipo de enemigo/ aliado. --> AGRESIVO, HEALER, BALANCEADO, etc 
+				
+		-> Esto haria que dependiendo como son sus tendencias, haga que el npc
+			sea propenso a pegar, buffear, debuffear, healear, etc. 
+			
+			Si es muy agresivo, aunque este por morir, seguira peleando. 
+			puede llegar a tener un trait de (-hp +dmg)
+			
+			Si es de debuff y buffs dependera de las stats, propias, aliadas y enemigas.
+			
+			Si es de curar, tendra mas encuenta la vida del aliado y la propia. 
+
+	- Chequear vida, daños (magico/fisico), defensas(magico/fisico) y velocidad.
+	- Chequear si es aliado o enemigo. El .type siendo player, ally, enemy o npc(no incluidos en combate)
+	- Una vez que identifica que son. Seleciona en base a variables. 
+		- Si un enemigo tiene muy poca vida, lo ataca.
+		- Si un aliado tiene poca vida y los enemigos mucha, lo cura. 
+		- etc. A ver despues. 
+
+- Una vez elige el objetivo(aliado o enemigo) busca la mejor opcion para hacer. 
+	- Chequea Mana propia --> luego el costo de las habilidades --> recien ahi elige opciones.
+	
+
+	"""
+	NOTA: 
+		Las habilidades deben de marcar si pueden ser usadas en un enemigo, aliado, o en si mismo. 
+		EJ: 
+		   -Si un Goblin tiene una hab vamp. (hace daño y se cura)
+			puede ser usada en enemigos, pero no en aliados. 
+
+		   -Si un Healer tiene habilidades de curacion especificas, 
+			puede ser usada en aliados y en si mismo, pero no en enemigos
+
+		   -Si se usa una habilidad de buff puede ser usada en aliados y en si mismo,
+			pero si esta habilidad tiene como funcion que hace daño y se sube el ataque
+			no puede ser usada en aliados o en si mismo. A priori. 
+			
+
+		El jugador podria llegar a tener un sistema aparte que no interfiera con esto. 
+	
+	FIN DE NOTA
+	
+	"""
+
+	- Hay varias opciones:
+			-Buscar daño 
+			-Buffearse a si mismo o aliado 
+			-Curarse a si mismo o aliado
+			-Debuffear al enemigo.
+
+
+	- El objetivo es aliado solo si el npc tiene habilidades que pueden ser utilizadas en ellos.
+		 --> No usa habilidades de daño. (Depende el NPC si tiene habs de buffs o heals sin daño)
+
+	- El objetivo puede ser enemigo sin condicional.
+		- En este caso puede hacer cualquier opcion. Sin incluir al aliado (a menos que haya una hab que lo permita, en principio no.)
+			Decide que hacer en base a las stats. 
+				-Si el enemigo objetivo tiene mucho ataque usar un debuf sobre eso.
+				(que seria mucho ataque? Se podrian guardar las stats iniciales al comienzo del combat
+				y ver si hubieron cambios positivos o negativos en base al original)
+				
+				-Si el objetivo tiene poca vida, va intentar matarlo. Usando Ataques. 
+	
+		""" 
+		   NOTA 2:
+			
+			Los tipos de habilidades, siendo 
+			enum AffectType{
+    				Buff = 0, 
+    				Debuff = 1, 
+    				Attack = 2, 
+    				CC = 3, 
+    				Heal = 4, 
+    				Corruption = 5,
+    				Consumption =6,
+   				Vamp = 7 
+			}
+
+			Deberan ser distintos, porque hay ataques con buffs, hay heals con debuffs, o heals y buffs, etc. 			
+			Deberan poder ser identificados de manera mas sencilla y clara para luego ser utilizados.
+			Ej. Atk&Buff/ Atk&Heal
+
+			
+
+
+
+
+
+
+
+		"""
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
