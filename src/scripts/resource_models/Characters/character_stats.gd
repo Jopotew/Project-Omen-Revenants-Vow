@@ -261,6 +261,7 @@ func recieve_damage(damage: int, type: Enums.DamageType, elemental_type: Enums.E
     
     if type == Enums.DamageType.Magic:
         calculate_damage(checked_damage, magic_defense)
+        
     elif type == Enums.DamageType.Physical:
         calculate_damage(checked_damage, physical_defense)
     else:

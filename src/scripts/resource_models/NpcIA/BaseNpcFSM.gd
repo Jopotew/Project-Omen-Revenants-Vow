@@ -28,7 +28,7 @@ func state_update(npc, target):
 
 ## Estado de espera: se activa hasta que sea su turno (o se cumpla alguna otra condición).
 func state_idle(npc, target):
-    # Ej: Verifica si es mi turno, si es el caso => current_state = ...
+    # MODIFICAR QUE RECIBA UNA LISTA DE COMBATIENTES EN VEZ DE UN SOLO OBJETIVO
     pass
 
 ## Estado especial si el NPC es muy confiado.

@@ -4,7 +4,7 @@ class_name Effect
 ## Nombre del efecto (Ej: "Burn", "Poison", "Stun")
 var name: String = "Effect"
 
-## Tipo de efecto (Buff, Debuff, Control)
+## Tipo de efecto (Buff, Debuff, CC)
 @export var effect_type: Enums.AffectType
 
 @export var duration: int = 0  

@@ -7,6 +7,63 @@ class_name GoblinFSM
 func state_idle(npc, target):
     if is_my_turn(npc):
         var npc_threshold = get_health_threshold(npc)
+        
+        """
+        Cosas que deberia hacer todo esto:
+            
+        1) Recibir la lista de todos los pjs en combate
+        2) Ver informacion de los pjs y propia
+            
+                Analiza la situación del combate y decide la acción del NPC en base a múltiples factores.
+
+                1. **Priorizar enemigos según peligro**
+                    - Si hay un enemigo con alto ataque o velocidad, considerarlo una amenaza prioritaria.
+                    - Si hay un enemigo con habilidades de curación o buffs, atacarlo primero para evitar que fortalezca a su equipo.
+
+                2. **Considerar el estado de los aliados**
+                    - Si hay un aliado con buffs activos, tal vez valga la pena potenciarlo más.
+                    - Si un aliado está aturdido o inmovilizado (CC), considerar liberarlo antes de atacar.
+                    - Si un aliado tiene poca vida y hay una habilidad de sacrificio, podría usarla para salvarlo.
+
+                3. **Evaluar si es momento de potenciarse**
+                    - Si el combate acaba de empezar, considerar usar buffs en vez de atacar directamente.
+                    - Si el NPC está en desventaja, usar buffs defensivos en vez de atacar.
+                    - Si ha perdido aliados y queda en minoría, enfocarse en sobrevivir más tiempo con buffs y curaciones.
+
+                4. **Adaptarse al estado del combate**
+                    - Si quedan pocos combatientes en ambos equipos, puede volverse más agresivo o defensivo.
+                    - Si el enemigo usa mucha magia, aumentar su defensa mágica antes de que lo ataquen.
+                    - Si el combate se alarga demasiado, considerar ataques que agoten recursos del enemigo (reducción de maná, venenos, etc.).
+
+                5. **Aprovechar ventajas elementales**
+                    - Si el enemigo tiene una gran debilidad elemental, priorizar ataques con ese elemento.
+                    - Si el NPC tiene resistencia a cierto tipo de ataque, provocar al enemigo para que lo ataque sin hacerle mucho daño.
+
+                6. **Usar estrategias de control (CC)**
+                    - Si el equipo enemigo tiene una gran ventaja numérica, intentar aturdir o ralentizar a varios enemigos para igualar el campo.
+                    - Si un enemigo es demasiado fuerte, enfocarse en inmovilizarlo en vez de intentar matarlo directamente.
+
+                7. **Evaluar recursos restantes**
+                    - Si el NPC tiene poca energía o maná, priorizar ataques físicos o pasivos.
+                    - Si quedan pocos turnos de buffs activos, decidir si refrescarlos o no.
+
+                Después de evaluar estas condiciones, el NPC decidirá si:
+                - Atacar agresivamente.
+                - Usar un buff o debuff.
+                - Apoyar a un aliado.
+                - Curarse o protegerse.
+                - Controlar al enemigo con efectos de CC.
+
+        
+        """
+        
+        
+        
+        
+        
+        
+        
+        
         var target_threshold = get_health_threshold(target)
         var prob = get_prob()
         # Si el NPC está en HIGH y el objetivo en VERY_LOW => ARROGANCE

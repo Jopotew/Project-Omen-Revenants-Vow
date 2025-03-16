@@ -46,6 +46,15 @@ enum CharacterRole{
     NEUTRAL
 }
 
+
+enum PosibleTargets{
+    SELF,
+    ALLY, 
+    ENEMY,
+    AOE 
+}
+
+
 enum CombatState{
     NONE,
     BERSERK,

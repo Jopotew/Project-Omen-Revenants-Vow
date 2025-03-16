@@ -44,9 +44,27 @@ class_name Ability
 
 
 func apply(user, target):
+    
     #Aplicar Costos 
     for effect in cost:
         effect.apply(user)
     #Aplicar Efectos
     for effect in effects:
         effect.apply(target)
+
+
+
+
+
+"""
+nuevo script que extiende de ability para poder 
+cambiar el apply
+se fija cuanto danio causo y de ahi se aplique un heal al npc.
+con un % del mismo
+hacer un .new de un effect de heal
+agregarle a recieve_damage() un return del danio para saber cuanto hizo
+
+ver como aplicar a aliados. 
+
+
+"""

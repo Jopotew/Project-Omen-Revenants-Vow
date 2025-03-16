@@ -204,6 +204,7 @@ func get_target():
             
     return targets_allowed.pick_random()
                 
+        
     
 #====================================================
 # EJECUCIÓN DE ACCIONES
