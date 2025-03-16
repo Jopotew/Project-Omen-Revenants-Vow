@@ -99,19 +99,12 @@ Solucion 1. CODIGO PARA CADA NPC EN ESPECIFICO
 			Deberan ser distintos, porque hay ataques con buffs, hay heals con debuffs, o heals y buffs, etc. 			
 			Deberan poder ser identificados de manera mas sencilla y clara para luego ser utilizados.
 			Ej. Atk&Buff/ Atk&Heal
-
-			
-
-
-
-
-
-
+			o buscarles un nombre  acorde. 
 
 		"""
 				
 
-
+	- Lo que mas importa es ver como armar habilidades que puedan ser aplicadas en varias instancias.  
 
 
 
