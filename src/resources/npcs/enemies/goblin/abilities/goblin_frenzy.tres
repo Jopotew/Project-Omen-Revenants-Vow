@@ -1,9 +1,7 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=12 format=3 uid="uid://dtfdtvocpbepn"]
+[gd_resource type="Resource" script_class="Ability" load_steps=5 format=3 uid="uid://dtfdtvocpbepn"]
 
 [ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/effect_model.gd" id="1_ih43n"]
 [ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/mana/decrease_mana.gd" id="2_yi3hf"]
-[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/attack/attack.gd" id="3_20imi"]
-[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/defense/decrease_defense.gd" id="4_g5ew8"]
 [ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/ability_model.gd" id="5_6sg7s"]
 
 [sub_resource type="Resource" id="Resource_mb0gy"]
@@ -11,57 +9,6 @@ script = ExtResource("2_yi3hf")
 mana = 5
 effect_type = 6
 duration = 0
-elemental_type = 11
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_2d0ii"]
-script = ExtResource("3_20imi")
-damage = 7
-type = 1
-effect_type = 2
-duration = 0
-elemental_type = 11
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_itfdy"]
-script = ExtResource("3_20imi")
-damage = 7
-type = 1
-effect_type = 2
-duration = 0
-elemental_type = 11
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_tkdp6"]
-script = ExtResource("3_20imi")
-damage = 10
-type = 2
-effect_type = 2
-duration = 0
-elemental_type = 11
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_17gvs"]
-script = ExtResource("4_g5ew8")
-defense = 10
-type = 0
-effect_type = 1
-duration = 0
-elemental_type = 11
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_mm4gq"]
-script = ExtResource("4_g5ew8")
-defense = 10
-type = 1
-effect_type = 1
-duration = 0
-elemental_type = 11
 animation = ""
 sound_effect = ""
 
@@ -70,11 +17,12 @@ script = ExtResource("5_6sg7s")
 name = "Goblin Frenzy"
 description = "In a blind fit of rage, the goblin rushes its enemy, ignoring its own safety."
 cost = Array[ExtResource("1_ih43n")]([SubResource("Resource_mb0gy")])
-type = 2
-state = 1
+skill_type = 0
+affect_type = 0
 cooldown = 0
+accuracy = 90
 corruption_increase = 0
-effects = Array[ExtResource("1_ih43n")]([SubResource("Resource_2d0ii"), SubResource("Resource_itfdy"), SubResource("Resource_tkdp6"), SubResource("Resource_17gvs"), SubResource("Resource_mm4gq")])
-target_type = "Single"
+effects = Array[ExtResource("1_ih43n")]([])
+target_type = 0
 animation = "None"
 sound_effect = "None"

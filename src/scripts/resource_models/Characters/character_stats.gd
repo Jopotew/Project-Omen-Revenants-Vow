@@ -260,12 +260,12 @@ func recieve_damage(damage: int, type: Enums.DamageType, elemental_type: Enums.E
     var checked_damage = check_element_affinity(elemental_type, damage)
     
     if type == Enums.DamageType.Magic:
-        calculate_damage(checked_damage, magic_defense)
+        return calculate_damage(checked_damage, magic_defense)
         
     elif type == Enums.DamageType.Physical:
-        calculate_damage(checked_damage, physical_defense)
+        return calculate_damage(checked_damage, physical_defense)
     else:
-        calculate_damage(checked_damage)
+        return calculate_damage(checked_damage)
         
 
 ## Calcula el daño recibido en base a la defensa del personaje.
@@ -279,9 +279,11 @@ func calculate_damage(checked_damage, defense_type = null):
  
     if defense_type == null:
         health -= checked_damage
+        return checked_damage
     
     else:
         health -= max(1, checked_damage / defense_type)
+        return max(1, checked_damage / defense_type)
 
 ## Modifica el daño basado en la afinidad elemental.
 func check_element_affinity(elemental_type: Enums.ElementalType, damage: int) -> int:

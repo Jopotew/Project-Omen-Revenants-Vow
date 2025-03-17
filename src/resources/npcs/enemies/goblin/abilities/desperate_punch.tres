@@ -1,10 +1,7 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=11 format=3 uid="uid://b4jjyyrwwhuwo"]
+[gd_resource type="Resource" script_class="Ability" load_steps=5 format=3 uid="uid://b4jjyyrwwhuwo"]
 
 [ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/effect_model.gd" id="1_ctavx"]
 [ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/mana/decrease_mana.gd" id="2_l0pd5"]
-[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/status/cc_effect.gd" id="3_57foo"]
-[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/status/probability_effect.gd" id="4_vt8pn"]
-[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/attack/attack.gd" id="5_er4ct"]
 [ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/ability_model.gd" id="6_qojkc"]
 
 [sub_resource type="Resource" id="Resource_puxok"]
@@ -12,35 +9,6 @@ script = ExtResource("2_l0pd5")
 mana = 0
 effect_type = 6
 duration = 0
-elemental_type = 11
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_85hxm"]
-script = ExtResource("3_57foo")
-effect_type = 0
-duration = 1
-elemental_type = 0
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_d8rn3"]
-script = ExtResource("4_vt8pn")
-probability = 0.25
-effect = SubResource("Resource_85hxm")
-effect_type = 3
-duration = 0
-elemental_type = 11
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_21mne"]
-script = ExtResource("5_er4ct")
-damage = 10
-type = 1
-effect_type = 2
-duration = 0
-elemental_type = 11
 animation = ""
 sound_effect = ""
 
@@ -49,11 +17,12 @@ script = ExtResource("6_qojkc")
 name = "Desperate Punch"
 description = "In a frantic attempt to defend itself, the goblin throws an uncoordinated punch."
 cost = Array[ExtResource("1_ctavx")]([SubResource("Resource_puxok")])
-type = 2
-state = 0
+skill_type = 0
+affect_type = 0
 cooldown = 0
+accuracy = 90
 corruption_increase = 0
-effects = Array[ExtResource("1_ctavx")]([SubResource("Resource_d8rn3"), SubResource("Resource_21mne")])
-target_type = "Single"
+effects = Array[ExtResource("1_ctavx")]([])
+target_type = 0
 animation = "None"
 sound_effect = "None"

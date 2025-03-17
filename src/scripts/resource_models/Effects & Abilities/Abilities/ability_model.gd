@@ -5,48 +5,36 @@ class_name Ability
 ## 🔹 INFORMACIÓN BÁSICA
 ## ==============================
 
-## Nombre de la habilidad.
 @export var name: String = "Unnamed Skill"  
-
-## Descripción de la habilidad.
 @export var description: String = "No description"  
-
-## Costo de uso (mana, energía, etc.).
 @export var cost: Array[Effect] 
 
-## 🔹 Tipo Principal de la Habilidad (Cómo se usa)
 @export var skill_type: Enums.SkillType = Enums.SkillType.ATTACK
-
-## 🔹 Efectos Secundarios (Qué hace la habilidad)
 @export_flags("Attack", "Buff", "Debuff", "Heal", "CC", "Corruption", "Consumption", "Vamp")
 var affect_type: int = 0
 
-## Número de turnos de recarga después de usar la habilidad.
 @export var cooldown: int = 0  
-
 @export var accuracy: int = 90
-
-## Aumento de corrupción al usar la habilidad.
 @export var corruption_increase: int = 0  
-
-## Efectos aplicados cuando se usa la habilidad.
 @export var effects: Array[Effect]
 
-## Tipo de objetivo ("Single", "All", "Self", etc.).
+## 🔹 Define si la habilidad se usa en enemigos, aliados, o área
 @export var target_type: Enums.TargetType   
 
-## Animación que se ejecuta al usar la habilidad.
 @export var animation: String = "None"  
-
-## Sonido asociado a la habilidad.
 @export var sound_effect: String = "None"  
 
+## ==============================
+## 🔹 MÉTODOS
+## ==============================
 
-## Aplica la habilidad sobre el objetivo.
-func apply(user, target):
+## Aplica la habilidad sobre el objetivo correcto
+func apply(user, targets: Array):
     pass
 
 
+
+## 🔹 Convierte los efectos en string legible
 func get_affect_type_string() -> String:
     var affect_names = {
         Enums.AffectType.ATTACK: "Attack",
@@ -66,17 +54,10 @@ func get_affect_type_string() -> String:
     
     return " & ".join(result) if result.size() > 0 else "None"
 
-
-##Checks Accuracy for the Ability. Return True if usable, False if not.
+## 🔹 Verifica si la habilidad acierta según la precisión
 func accuracy_check() -> bool:
-    var prob = randi_range(10, 100)
-    var value: bool
-    if prob < accuracy:
-        value = true
-        return value
-    value = false
-    return value
-    
+    return randi_range(10, 100) < accuracy
+
     
 
 

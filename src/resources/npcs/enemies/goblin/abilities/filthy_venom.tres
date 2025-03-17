@@ -1,9 +1,7 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=9 format=3 uid="uid://crytwdcnniy4w"]
+[gd_resource type="Resource" script_class="Ability" load_steps=5 format=3 uid="uid://crytwdcnniy4w"]
 
 [ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/effect_model.gd" id="1_xewnu"]
 [ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/mana/decrease_mana.gd" id="2_urqm3"]
-[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/status/dot_effect.gd" id="3_47yqo"]
-[ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/defense/decrease_defense.gd" id="4_jnr60"]
 [ext_resource type="Script" path="res://scripts/resource_models/Effects & Abilities/ability_model.gd" id="5_i0lkd"]
 
 [sub_resource type="Resource" id="Resource_prfek"]
@@ -11,27 +9,6 @@ script = ExtResource("2_urqm3")
 mana = 0
 effect_type = 6
 duration = 0
-elemental_type = 11
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_fe0gt"]
-script = ExtResource("3_47yqo")
-damage = 5
-type = 0
-effect_type = 2
-duration = 3
-elemental_type = 8
-animation = ""
-sound_effect = ""
-
-[sub_resource type="Resource" id="Resource_jgpm3"]
-script = ExtResource("4_jnr60")
-defense = 5
-type = 1
-effect_type = 1
-duration = 0
-elemental_type = 8
 animation = ""
 sound_effect = ""
 
@@ -40,11 +17,12 @@ script = ExtResource("5_i0lkd")
 name = "Filthy Venom"
 description = "The goblin spits a greenish liquid at its target, weakening them and making them more vulnerable."
 cost = Array[ExtResource("1_xewnu")]([SubResource("Resource_prfek")])
-type = 1
-state = 0
+skill_type = 0
+affect_type = 0
 cooldown = 0
+accuracy = 90
 corruption_increase = 2
-effects = Array[ExtResource("1_xewnu")]([SubResource("Resource_fe0gt"), SubResource("Resource_jgpm3")])
-target_type = "Single"
+effects = Array[ExtResource("1_xewnu")]([])
+target_type = 0
 animation = "None"
 sound_effect = "None"

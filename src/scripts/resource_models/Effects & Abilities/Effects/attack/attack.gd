@@ -10,4 +10,4 @@ func _init() -> void:
     name = "Attack Effect"
     
 func apply(target):
-    target.combat_stats.recieve_damage(damage, type, elemental_type)
+    return target.combat_stats.recieve_damage(damage, type)
