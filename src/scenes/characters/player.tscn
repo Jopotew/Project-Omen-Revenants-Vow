@@ -13,23 +13,23 @@ script = ExtResource("5_o24kk")
 mana = 10
 effect_type = 0
 duration = 0
-elemental_type = 0
 animation = ""
 sound_effect = ""
 
 [sub_resource type="Resource" id="Resource_y2v68"]
 script = ExtResource("2_mdwqm")
 name = "Holy Fire"
-description = "No description"
+description = null
 cost = Array[ExtResource("4_umbjk")]([SubResource("Resource_iq2v4")])
-type = 0
-state = 0
-cooldown = 0
-corruption_increase = 0
-effects = Array[ExtResource("4_umbjk")]([])
-target_type = "Single"
-animation = "None"
-sound_effect = "None"
+skill_type = null
+affect_type = null
+cooldown = null
+accuracy = null
+corruption_increase = null
+effects = null
+target_type = null
+animation = null
+sound_effect = null
 
 [sub_resource type="Resource" id="Resource_4sp1w"]
 script = ExtResource("3_pt82d")

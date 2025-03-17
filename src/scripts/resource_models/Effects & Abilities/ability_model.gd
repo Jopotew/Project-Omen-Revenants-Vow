@@ -2,58 +2,82 @@ extends Resource
 class_name Ability
 
 ## ==============================
-## 🔹 BASIC INFORMATION
+## 🔹 INFORMACIÓN BÁSICA
 ## ==============================
 
-## The name of the skill.
+## Nombre de la habilidad.
 @export var name: String = "Unnamed Skill"  
 
-
-## A short description of what the skill does.
+## Descripción de la habilidad.
 @export var description: String = "No description"  
 
-## The amount of energy, mana, or action points required to use this skill.
+## Costo de uso (mana, energía, etc.).
 @export var cost: Array[Effect] 
 
+## 🔹 Tipo Principal de la Habilidad (Cómo se usa)
+@export var skill_type: Enums.SkillType = Enums.SkillType.ATTACK
 
-@export var type: Enums.AffectType
+## 🔹 Efectos Secundarios (Qué hace la habilidad)
+@export_flags("Attack", "Buff", "Debuff", "Heal", "CC", "Corruption", "Consumption", "Vamp")
+var affect_type: int = 0
 
-
-@export var state: Enums.CombatState = Enums.CombatState.NONE
-
-## Number of turns required to recharge this skill after use.
+## Número de turnos de recarga después de usar la habilidad.
 @export var cooldown: int = 0  
 
-## The accuracy percentage of the skill (100 means it never misses).
-#@export var accuracy: int = 90  
+@export var accuracy: int = 90
 
-### If applicable, the corruption cost for using this skill.
+## Aumento de corrupción al usar la habilidad.
 @export var corruption_increase: int = 0  
 
-## The effect applied when this skill is used (e.g., "Burn", "Freeze").
-@export var effects : Array[Effect]
+## Efectos aplicados cuando se usa la habilidad.
+@export var effects: Array[Effect]
 
-## Defines the skill’s target: "Single", "All", "Self", etc.
-@export var target_type: String = "Single"  
+## Tipo de objetivo ("Single", "All", "Self", etc.).
+@export var target_type: Enums.TargetType   
 
-## The name of the animation associated with this skill.
+## Animación que se ejecuta al usar la habilidad.
 @export var animation: String = "None"  
 
-## The sound effect played when this skill is used.
+## Sonido asociado a la habilidad.
 @export var sound_effect: String = "None"  
 
 
+## Aplica la habilidad sobre el objetivo.
 func apply(user, target):
+    pass
+
+
+func get_affect_type_string() -> String:
+    var affect_names = {
+        Enums.AffectType.ATTACK: "Attack",
+        Enums.AffectType.BUFF: "Buff",
+        Enums.AffectType.DEBUFF: "Debuff",
+        Enums.AffectType.HEAL: "Heal",
+        Enums.AffectType.CC: "CC",
+        Enums.AffectType.CORRUPTION: "Corruption",
+        Enums.AffectType.CONSUMPTION: "Consumption",
+        Enums.AffectType.VAMP: "Vamp"
+    }
     
-    #Aplicar Costos 
-    for effect in cost:
-        effect.apply(user)
-    #Aplicar Efectos
-    for effect in effects:
-        effect.apply(target)
+    var result = []
+    for key in affect_names.keys():
+        if affect_type & key:
+            result.append(affect_names[key])
+    
+    return " & ".join(result) if result.size() > 0 else "None"
 
 
-
+##Checks Accuracy for the Ability. Return True if usable, False if not.
+func accuracy_check() -> bool:
+    var prob = randi_range(10, 100)
+    var value: bool
+    if prob < accuracy:
+        value = true
+        return value
+    value = false
+    return value
+    
+    
 
 
 """

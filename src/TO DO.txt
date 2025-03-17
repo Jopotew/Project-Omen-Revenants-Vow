@@ -1,0 +1,208 @@
+TO DO LIST:
+    
+COMBATE :
+    -Crear modelos de habilidades con su respectivo apply. 
+        **Habilidades de Ataque (ATTACK)**
+
+            - Ataque & Buff
+            - Ataque & Debuff
+            - Ataque & Curación
+            - Ataque & CC
+            - Ataque & Corrupción
+            - Ataque & Consumo de Vida
+            - Ataque & Robo de Vida
+            - Ataque & Buff & Curación
+            - Ataque & Debuff & CC
+            - Ataque & Buff & Consumo de Vida
+
+        **Habilidades de Soporte (SUPPORT)**
+
+            - Curación & Buff
+            - Curación & Debuff (elimina estados negativos)
+            - Buff & CC
+            - Buff & Consumo de Vida
+            - Curación & Buff & Eliminación de Debuff
+
+        **Habilidades de Control (CONTROL)**
+
+            - CC & Debuff
+            - CC & Buff
+            - CC & Consumo de Vida
+            - CC & Robo de Vida
+            - CC & Corrupción
+            - CC & Debuff & Buff
+
+        **Habilidades de Auto-Uso (AUTO\_USE)**
+
+            - Buff & Consumo de Vida
+            - Buff & Corrupción
+            - Buff & Evasión
+            - Buff & Robo de Vida
+            - Buff & CC (Esquivar el próximo ataque)
+
+
+
+
+    -Modificar y crear los efectos que falten
+    
+    -Modificar los scripts de STATS y BATTLE CONDITIONS para incluir mejor las habs y efectos. 
+        -Mejorar el tema de mantener los ccs y cambios de turno
+        -Modificar estados de pjs, como aliados enemigos.
+    
+    -Acomodar Enums necesarios
+    
+    - Empezar a modificar la ia de los NPCS
+        -Las ideas estan en el NPC IA IDEA.txt (res://NPC IA IDEA.txt)
+        
+        
+    -Organizar las funciones de combate mejor 
+    
+    -Agregar funciones de prints de los combatientes
+        -Saber sus vidas y stats en cada turno
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
